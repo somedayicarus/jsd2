@@ -1,0 +1,114 @@
+/* --------------------------------------- */
+/* ------------>>> GLOBAL <<<------------- */
+/* --------------------------------------- */
+@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,200|Source+Sans+Pro);
+
+header, footer, section {
+	width:70%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+p, a {
+	font-family:'Source Sans Pro', helvetica, arial, sans-serif;
+}
+
+p {
+	color: #2b2b2b;
+}
+
+a {color: #CC3399;}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Advent Pro', 'Source Sans Pro', Helvetica, arial, sans-serif;
+	text-transform: uppercase;
+	font-weight: 200;
+	letter-spacing: 3px;
+	text-shadow:0 0 6px;
+}
+
+
+/* ------------------------------------ */
+/* --------->>> HEADER <<<--------- */
+/* ------------------------------------ */
+header {
+	margin-top:100px;
+	padding:40px;
+	text-align: center;
+	background: #CCFFFF;
+	color: #FF33CC;
+	border-bottom: 5px double #FD81E1;
+}
+
+header h1 {
+	font-size:60px;
+
+
+}
+header p {
+	font-size:18px;
+}
+
+
+
+/* ------------------------------------ */
+/* --------->>> NAVIGATION <<<--------- */
+/* ------------------------------------ */
+.nav h1 {
+	font-size:28px;
+	text-align:center;
+	padding:28px;
+	background:#CCCCFF;
+	color:#CCFFFF;
+	margin-bottom:20px;
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 0;
+	text-align:center;
+}
+
+li {
+	border:2px dotted #FF0099;
+	border-radius: 5px;
+	padding:15px 30px;
+}
+
+
+/* ------------------------------------ */
+/* --------->>> FLARE <<<--------- */
+/* ------------------------------------ */
+.unicorn {
+	margin-left:-40px;
+	text-align:center;
+}
+.divider {
+	width:70%;
+	margin:0 auto;
+	text-align:center;
+}
+.divider img {
+	display:inline;
+}
+.divider img:last-of-type {
+	margin-left: -13px;
+}
+#sparkle1 {
+	position:relative;
+	left:160px;
+	bottom:80px;
+	transform:rotate(50deg);
+}
+#sparkle2 {
+	position: relative;
+	top:30px;
+	right:60px;
+}
+
+
+
+
