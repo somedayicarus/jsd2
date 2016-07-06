@@ -1,7 +1,7 @@
 /* --------------------------------------- */
 /* ------------>>> GLOBAL <<<------------- */
 /* --------------------------------------- */
-@import url(https://fonts.googleapis.com/css?family=Press+Start+2P|VT323|Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P|VT323);
 
 header, footer, section {
 	width:100%;
@@ -9,13 +9,7 @@ header, footer, section {
 	margin-left: auto;
 }
 
-p, a {
-	font-family:'Source Sans Pro', helvetica, arial, sans-serif;
-}
-
-p {
-	color: #2b2b2b;
-}
+p {color: #2b2b2b;}
 
 a {
 	color: #CC3399;
@@ -26,13 +20,13 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Press Start 2P', monospace;
 	text-transform: uppercase;
 	font-weight: 200;
-	letter-spacing: 3px;
+	letter-spacing: 8px;
 
 }
 
 
 /* ------------------------------------ */
-/* --------->>> HEADER <<<--------- */
+/* ----------->>> HEADER <<<----------- */
 /* ------------------------------------ */
 header {
 	padding:110px 0 40px;
@@ -46,6 +40,7 @@ header h1 {
 	font-size:40px;
 	text-shadow:#f5a3eb 0 0 6px;
 }
+
 header p {
 	font-family:'VT323', monospace;
 	font-size:24px;
@@ -59,6 +54,7 @@ header p {
 .nav {
 	margin-bottom:60px;
 }
+
 nav {
 	width:80%;
 	max-width: 1170px;
@@ -92,10 +88,12 @@ li a {
 	width:140px;
 	padding:15px 0;
 }
+
 nav a:hover {
 	color:#fff;
 	background-image:url('../images/sparkle_green.gif');
 }
+
 #hw1 {background-color: #ffc3e1;}
 #hw2 {background-color: #ffe2a7;}
 #hw3 {background-color: #fffa9d;}
@@ -110,28 +108,58 @@ nav a:hover {
 footer {
 	text-align:center;
 }
+
 #unicorn {
+	width:100%;
+	max-width:500px;
 	margin-right:100px;
 }
+
 .sparkles {
 	position:relative;;
 	width:320px;
 	text-align:center;
 	margin:0 auto;
 }
+
 #sparkle1 {
 	position:absolute;
 	top:180px;
 	left:-50px;
 	transform:rotate(50deg);
 }
+
 #sparkle2 {
 	position:absolute;
 	top:0;
 	right:50px;
-
 }
 
+/* -------------------------------------- */
+/* -------->>> MEDIA QUERIES <<<--------- */
+/* -------------------------------------- */
+@media(max-width:1050px) {
+	li a {
+		width:250px;
+		margin-bottom:10px;
+	}
+	#unicorn {
+		margin-right:0;
+	}
+	#sparkle1 {
+		left:0;
+	}
+	#sparkle2{
+		right:0;
+	}
+}
+
+@media(max-width:940px) {
+	ul, li a, li {
+		width:100%;
+	}
+
+}
 
 
 
