@@ -17,14 +17,17 @@ p {
 	color: #2b2b2b;
 }
 
-a {color: #CC3399;}
+a {
+	color: #CC3399;
+	text-decoration: none;
+}
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Press Start 2P', monospace;
 	text-transform: uppercase;
 	font-weight: 200;
 	letter-spacing: 3px;
-	text-shadow:0 0 6px;
+
 }
 
 
@@ -41,31 +44,35 @@ header {
 
 header h1 {
 	font-size:40px;
-
-
+	text-shadow:#f5a3eb 0 0 6px;
 }
 header p {
 	font-family:'VT323', monospace;
-	font-size:18px;
+	font-size:24px;
+	color:#fd81e1;
 }
-
 
 
 /* ------------------------------------ */
 /* --------->>> NAVIGATION <<<--------- */
 /* ------------------------------------ */
-nav {
-	width:70%;
-	margin:0 auto;
-
+.nav {
+	margin-bottom:60px;
 }
+nav {
+	width:80%;
+	max-width: 1170px;
+	margin:0 auto;
+}
+
 .nav h1 {
-	font-size:28px;
+	font-family:'VT323', monospace;
+	font-size:36px;
 	text-align:center;
 	padding:28px;
 	background:#CCCCFF;
 	color:#CCFFFF;
-	margin-bottom:20px;
+	margin-bottom:30px;
 }
 
 nav ul {
@@ -82,8 +89,12 @@ li a {
 	display:block;
 	font-family:'VT323', monospace;
 	border-radius: 5px;
-	width:130px;
-	padding:12px 0;
+	width:140px;
+	padding:15px 0;
+}
+nav a:hover {
+	color:#fff;
+	background-image:url('../images/sparkle_green.gif');
 }
 #hw1 {background-color: #ffc3e1;}
 #hw2 {background-color: #ffe2a7;}
@@ -94,22 +105,31 @@ li a {
 
 
 /* ------------------------------------ */
-/* --------->>> FLARE <<<--------- */
+/* ----------->>> FLARE <<<------------ */
 /* ------------------------------------ */
-.unicorn {
-	margin-left:-40px;
+footer {
 	text-align:center;
 }
+#unicorn {
+	margin-right:100px;
+}
+.sparkles {
+	position:relative;;
+	width:320px;
+	text-align:center;
+	margin:0 auto;
+}
 #sparkle1 {
-	position:relative;
-	left:160px;
-	bottom:80px;
+	position:absolute;
+	top:180px;
+	left:-50px;
 	transform:rotate(50deg);
 }
 #sparkle2 {
-	position: relative;
-	top:30px;
-	right:60px;
+	position:absolute;
+	top:0;
+	right:50px;
+
 }
 
 
