@@ -1,10 +1,10 @@
 /* --------------------------------------- */
 /* ------------>>> GLOBAL <<<------------- */
 /* --------------------------------------- */
-@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,200|Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P|VT323|Source+Sans+Pro);
 
 header, footer, section {
-	width:70%;
+	width:100%;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -20,7 +20,7 @@ p {
 a {color: #CC3399;}
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Advent Pro', 'Source Sans Pro', Helvetica, arial, sans-serif;
+	font-family: 'Press Start 2P', monospace;
 	text-transform: uppercase;
 	font-weight: 200;
 	letter-spacing: 3px;
@@ -32,8 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --------->>> HEADER <<<--------- */
 /* ------------------------------------ */
 header {
-	margin-top:100px;
-	padding:40px;
+	padding:110px 0 40px;
 	text-align: center;
 	background: #CCFFFF;
 	color: #FF33CC;
@@ -41,11 +40,12 @@ header {
 }
 
 header h1 {
-	font-size:60px;
+	font-size:40px;
 
 
 }
 header p {
+	font-family:'VT323', monospace;
 	font-size:18px;
 }
 
@@ -54,6 +54,11 @@ header p {
 /* ------------------------------------ */
 /* --------->>> NAVIGATION <<<--------- */
 /* ------------------------------------ */
+nav {
+	width:70%;
+	margin:0 auto;
+
+}
 .nav h1 {
 	font-size:28px;
 	text-align:center;
@@ -72,11 +77,18 @@ nav ul {
 	text-align:center;
 }
 
-li {
-	border:2px dotted #FF0099;
+li a {
+	display:block;
+	font-family:'VT323', monospace;
 	border-radius: 5px;
 	padding:15px 30px;
 }
+#hw1 {background-color: #ffc3e1;}
+#hw2 {background-color: #ffe2a7;}
+#hw3 {background-color: #fffa9d;}
+#hw4 {background-color: #c6f8a6;}
+#hw5 {background-color: #afe2ff;}
+#hw6 {background-color: #e3b6fb;}
 
 
 /* ------------------------------------ */
@@ -85,17 +97,6 @@ li {
 .unicorn {
 	margin-left:-40px;
 	text-align:center;
-}
-.divider {
-	width:70%;
-	margin:0 auto;
-	text-align:center;
-}
-.divider img {
-	display:inline;
-}
-.divider img:last-of-type {
-	margin-left: -13px;
 }
 #sparkle1 {
 	position:relative;
