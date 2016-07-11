@@ -5,7 +5,27 @@ body {
   font-family: Arial;
   font-size: 20px;
   line-height: 30px;
+  width:800px;
+  margin:40px auto;
 }
+header {
+  margin-bottom: 40px;
+}
+.home-btn {
+  text-decoration: none;
+  padding:10px 20px;
+  border:2px solid pink;
+  border-radius: 5px;
+}
+.home-btn img {
+  width:25px;
+  vertical-align: sub;
+}
+
+.home-btn:hover {
+  background-color:pink;
+}
+
 h1 {
   font-size: 20px;
 }
