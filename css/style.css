@@ -89,6 +89,19 @@ li a {
 	padding:15px 0;
 }
 
+
+nav a {
+	opacity:1;
+	cursor:pointer;
+}
+
+
+nav a[href="#"] {
+	opacity:.5;
+	cursor:default;
+}
+
+
 nav a:hover {
 	color:#fff;
 	background-image:url('../images/sparkle_green.gif');
