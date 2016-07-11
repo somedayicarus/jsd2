@@ -93,14 +93,18 @@ li a {
 nav a {
 	opacity:1;
 	cursor:pointer;
-}
 
+}
 
 nav a[href="#"] {
 	opacity:.5;
 	cursor:default;
 }
 
+nav a[href="#"]:hover {
+	background-image:none;
+	color:#CC3399;
+}
 
 nav a:hover {
 	color:#fff;
