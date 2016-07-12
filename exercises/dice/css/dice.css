@@ -1,0 +1,71 @@
+/* Layout */
+/* ***************************************** */
+body {
+  color: #000;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+}
+
+main {
+	width: 90%;
+	margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Header */
+/* ***************************************** */
+header {
+  text-align: center;
+  border-bottom: 1px solid #333333;
+}
+
+
+/* Dice */
+/* ***************************************** */
+main span {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 20px;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+.dice-1 {
+  background-image: url('../img/1.png');
+}
+.dice-2 {
+  background-image: url('../img/2.png');
+}
+.dice-3 {
+  background-image: url('../img/3.png');
+}
+.dice-4 {
+  background-image: url('../img/4.png');
+}
+.dice-5 {
+  background-image: url('../img/5.png');
+}
+.dice-6 {
+  background-image: url('../img/6.png');
+}
+
+
+/* Button */
+/* ***************************************** */
+footer {
+  margin: 50px;
+  text-align: center;
+}
+.roll-button {
+  border: 1px solid white;
+  border-radius: 3px;
+  background: purple;
+  color: white;
+  width: 200px;
+  margin: auto;
+  padding: 10px 5px;
+  font-size: 20px;
+}
