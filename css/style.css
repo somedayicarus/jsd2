@@ -156,6 +156,9 @@ footer {
 	right:50px;
 }
 
+
+/* hide sparkle button for now */
+#sparkle-btn {display:none;}
 /* -------------------------------------- */
 /* -------->>> MEDIA QUERIES <<<--------- */
 /* -------------------------------------- */
