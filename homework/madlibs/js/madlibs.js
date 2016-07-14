@@ -27,40 +27,41 @@ clear.addEventListener('click', clearFavorites);
 // Event Listeners
 // ------------------------------------------
 function generateStartup() {
-
-	// TODO: generate two random index numbers, one for each array
+	// generate random indexes
 	var randomX = Math.floor(Math.random() * startupX.length - 1) + 1;
 	var randomY = Math.floor(Math.random() * startupY.length - 1) + 1;
 
-	// concatenate the fixed text with the two random values
+	// generate random startups 
 	startupIdea = 'A startup that is ' + startupX[randomX] + ', but for ' + startupY[randomY] + '!';
 
-	// Update page with new startup idea
+	// update html
 	startup.innerHTML = startupIdea;
 };
+
 
 function saveFavorite() {
 	// add the new idea to the array
 	favorites.push(startupIdea);
 };
 
+
 function printFavorites() {
 	var favoritesText = '';
 	list.innerHTML = '';
 
-	// concatenate favorites into one string
+	// create string from favorites array
 	favorites.forEach(createString);
 	function createString(itemInArray) {
 		favoritesText = favoritesText + itemInArray + '<br>';
-
 	};
 
-	// update the list element with the new concatenated string
+	// update html
 	list.innerHTML = '<h2>Startup Ideas</h2>' + favoritesText;
 };
 
+
 function clearFavorites() {
-	// clear favorites array and list
+	// clear favorites from array and list
 	favorites = [];
 	list.innerHTML = ''; 
 };
