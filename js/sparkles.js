@@ -1,8 +1,7 @@
 //array of sparkle gifs
-var bling = ['images/sparkle_yellow.gif', 'images/silver_stars.gif',
- 'images/tiny_blue_sparkle.gif', 'images/large_star_outline_pink.gif',
+var bling = ['images/sparkle_yellow.gif', 'images/tiny_blue_sparkle.gif', 'images/large_star_outline_pink.gif',
  'images/pink_sparkle_stars.gif', 'images/sparkle_green.gif', 'images/sparkles.gif',
- 'images/sparkle_silver.gif' ]
+ 'images/sparkle_silver.gif', 'images/sparkles_multi.gif', 'images/twinkles_blue.gif']
 
 
 //create variable and link it to sparkle button
@@ -27,7 +26,6 @@ function addSparkles() {
 	sparkleGIF.style.top = randomX + "%";
 	sparkleGIF.style.left = randomY + "%";
 	document.getElementById('container').appendChild(sparkleGIF);
-
 }
 
 

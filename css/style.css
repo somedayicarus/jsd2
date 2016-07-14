@@ -4,6 +4,7 @@
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P|VT323);
 #container {
 	position:relative;
+	overflow:hidden;
 }
 
 body {
@@ -40,7 +41,7 @@ header {
 	text-align: center;
 	background: #CCFFFF;
 	color: #FF33CC;
-	border-bottom: 5px double #FD81E1;
+	border-bottom: 3px dotted #FD81E1;
 }
 
 header h1 {
@@ -52,6 +53,7 @@ header p {
 	font-family:'VT323', monospace;
 	font-size:24px;
 	color:#fd81e1;
+	margin-bottom:40px;
 }
 
 
@@ -162,6 +164,14 @@ footer {
 #sparkle-btn {
 	position:relative;
 	z-index: 9999;
+	font-family:'VT323', monospace;
+	font-size:18px;
+
+}
+
+#sparkle-btn:hover {
+	font-style: italic;
+	border-color: white;
 }
 
 
