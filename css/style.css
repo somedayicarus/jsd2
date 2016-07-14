@@ -2,6 +2,9 @@
 /* ------------>>> GLOBAL <<<------------- */
 /* --------------------------------------- */
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P|VT323);
+#container {
+	position:relative;
+}
 
 body {
 	background-color: white;
@@ -156,9 +159,12 @@ footer {
 	right:50px;
 }
 
+#sparkle-btn {
+	position:relative;
+	z-index: 9999;
+}
 
-/* hide sparkle button for now */
-#sparkle-btn {display:none;}
+
 /* -------------------------------------- */
 /* -------->>> MEDIA QUERIES <<<--------- */
 /* -------------------------------------- */
