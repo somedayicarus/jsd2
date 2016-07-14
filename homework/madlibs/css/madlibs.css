@@ -1,0 +1,23 @@
+body {
+	background: #89998F;
+	font-family: "Avenir", Arial, sans-serif;
+	text-align: center;
+	padding: 20px;
+}
+button {
+	background: #5ABD7F;
+	color: #F4FFF8;
+	border: 1px solid #87B899;
+	border-radius: 5px;
+	line-height: 40px;
+	padding: 0 20px;
+	font-family: "Avenir", Arial, sans-serif;
+	font-size: 16px;
+}
+.startup {
+	margin: 20px 0;
+}
+
+.list {
+	margin-top:40px;
+}
