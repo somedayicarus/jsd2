@@ -21,3 +21,23 @@ button {
 .list {
 	margin-top:40px;
 }
+header {
+	margin:40px 0px;
+}
+
+.home-btn {
+  text-decoration: none;
+  padding:15px;
+  /* border:2px solid white;
+  border-radius: 50%; */
+
+}
+.home-btn img {
+  width:25px;
+  vertical-align: bottom;
+}
+
+.home-btn:hover {
+  /* background-color:white; */
+  background-image:url('../../../images/sparkle_silver.gif');
+}

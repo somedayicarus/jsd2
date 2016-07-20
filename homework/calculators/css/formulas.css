@@ -16,8 +16,6 @@ header {
 .home-btn {
   text-decoration: none;
   padding:20px;
-  border:2px solid pink;
-  border-radius: 50%;
 
 }
 .home-btn img {
@@ -26,7 +24,7 @@ header {
 }
 
 .home-btn:hover {
-  background-color:pink;
+  background-image:url('../../../images/sparkles.gif');
 }
 
 section {
@@ -34,7 +32,7 @@ section {
   margin:40px auto;
   float:right;
   padding-left:20px;
-  border-left:1px solid pink;
+
 }
 h1 {
   font-size: 20px;
