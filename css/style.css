@@ -47,13 +47,14 @@ header {
 header h1 {
 	font-size:40px;
 	text-shadow:#f5a3eb 0 0 6px;
+	margin:20px 0;
 }
 
 header p {
 	font-family:'VT323', monospace;
 	font-size:24px;
 	color:#fd81e1;
-	margin-bottom:40px;
+	margin-bottom:20px;
 }
 
 
@@ -161,13 +162,18 @@ footer {
 	right:50px;
 }
 
-#sparkle-btn {
+#sparkle-btn, #clear-btn {
+	display:inline-block;
+	padding:10px 15px;
+	background:white;
+	border-radius:5px;
 	position:relative;
 	z-index: 9999;
 	font-family:'VT323', monospace;
 	font-size:18px;
-
 }
+#sparkle-btn {margin:15px 5px 0 0;}
+#clear-btn {margin:15px 15px 0 0;}
 
 #sparkle-btn:hover {
 	font-style: italic;

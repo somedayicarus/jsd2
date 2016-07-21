@@ -6,10 +6,12 @@ var bling = ['images/sparkle_yellow.gif', 'images/tiny_blue_sparkle.gif', 'image
 
 //create variable and link it to sparkle button
 var sparkleButton = document.getElementById("sparkle-btn");
+var clear = document.getElementById("clear-btn");
+var glitterContainer = document.getElementById("glitter-container");
 
 //add event listener
-sparkleButton.addEventListener('click', addSparkles)
-
+sparkleButton.addEventListener("click", addSparkles)
+clear.addEventListener("click", clearSparkles);
 
 //addSparkles function 
 function addSparkles() {
@@ -25,10 +27,17 @@ function addSparkles() {
 	sparkleGIF.style.position = "absolute";
 	sparkleGIF.style.top = randomX + "%";
 	sparkleGIF.style.left = randomY + "%";
-	document.getElementById('container').appendChild(sparkleGIF);
+	glitterContainer.appendChild(sparkleGIF);
 }
 
+//clearSparkles function
+function clearSparkles() {
+	while (glitterContainer.firstChild) {
+	  glitterContainer.removeChild(glitterContainer.firstChild);
+	}
+};
 
+//helper function
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
