@@ -1,0 +1,44 @@
+/* Age Check - Conditionals exercise */
+/* ***************************************** */
+
+body {
+	font-family: "Futura";
+    background-color: #FFF;
+	font-size: 16px;
+	margin: 50px auto;
+}
+.age-check {
+	min-width: 300px;
+	max-width: 600px;
+	margin: auto;
+    padding: 20px;
+	border: 1px solid #999;
+	border-radius: 3px;
+    color: rgb(30, 30, 212);
+    background-color: rgba(60, 97, 212, 0.7);
+    text-align: center;
+}
+.age-check div {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+.age-check button,
+.age-check input {
+	margin: 0 5px;
+	padding: 5px 10px;
+	border: 1px solid #999;
+	border-radius: 3px;
+	font-family: "Futura";
+	font-size: 18px;
+	line-height: 30px;
+}
+.age-check input {
+	width: 80px;
+}
+.age-check button {
+	background-color: rgb(173, 212, 60);
+}
+.age-check p {
+	margin-top: 10px;
+}

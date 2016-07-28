@@ -1,0 +1,44 @@
+body {
+	margin: 50px auto;
+	color: #66A2AC;
+	font-family: "Raleway", sans-serif;
+	font-size: 16px;
+}
+
+
+main {
+	border: 1px solid #E8C070;
+	border-radius: 2px;
+	background: #D2C09B;
+	width: 600px;
+	margin: auto;
+	padding: 20px;
+}
+main header {
+	display: flex;
+	align-items: center;
+}
+main header h1 {
+	flex: 1;
+	color: #66A2AC;
+}
+main header button {
+	background: #66A2AC;
+	border: none;
+	border-radius: 5px;
+	color: #A4D5D7;
+	margin: 0 20px;
+	padding: 6px 10px;
+	font-size: 22px;
+	transition: all 150ms ease;
+	cursor: pointer;
+}
+main header button:hover {
+	background: #77BCC9;
+}
+
+.addresses li {
+	color: #B6501B;
+	margin: 4px 0;
+
+}
