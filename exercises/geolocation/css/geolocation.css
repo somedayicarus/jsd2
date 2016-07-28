@@ -1,0 +1,77 @@
+/* Layout / Typography
+---------------------------------------------- */
+body {
+	color: #2A0C0A;
+	background: linear-gradient(to bottom, #649173 0%, #DBD5A4 45%, #DBD5A4 100%);
+	font-family: "Montserrat", sans-serif;
+	font-size: 16px;
+}
+
+
+/* Main section
+---------------------------------------------- */
+main {
+	max-width: 550px;
+	margin: auto;
+	padding-bottom: 150px;
+}
+main header {
+	padding: 8px 24px;
+	border-bottom: 2px solid #467A58;
+}
+main header h1 {
+	color: #2B5E3C;
+	text-align: center;
+}
+main .locations {
+	width: 90%;
+	margin: auto;
+}
+
+
+/* Button styles
+---------------------------------------------- */
+main button {
+	display: flex;
+	align-items: center;
+	margin: 18px auto;
+	padding: 6px 10px;
+	color: #4a351c;
+	background: #C6A889;
+	border: 1px solid #EBD5BD;
+	border-radius: 2px;
+	font-size: 18px;
+	transition: all 150ms ease;
+	cursor: pointer;
+	outline: none;
+}
+main button:hover {
+	background: #EBD5BD;
+}
+main button:focus {
+	border: 1px solid #FFF3E7;
+	box-shadow: 0 0 1px 0px #FFF3E7;
+}
+main button:active {
+	background: #FFF3E7;
+}
+main button i {
+	margin: 0 -1px 0 4px;
+	transform: rotate(-45deg) translateX(3px);
+}
+
+
+/* Errors section
+---------------------------------------------- */
+main .error {
+	margin: 12px auto;
+	padding: 8px 12px;
+	color: #80463B;
+	background: #C69289;
+	border: 1px solid #80463B;
+	border-left: 0;
+	border-right: 0;
+}
+main .error:empty {
+	display: none;
+}

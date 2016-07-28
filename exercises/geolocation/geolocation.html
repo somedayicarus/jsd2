@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geolocation Lab</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/geolocation.css">
+	<link rel="stylesheet" href="css/instructions.css">
+</head>
+<body>
+
+<main>
+	<header>
+		<h1>Geolocation Lab</h1>
+	</header>
+
+	<section>
+		<button>
+			<span>Get Current Position</span>
+			<i>➤</i>
+		</button>
+		<p class="error"></p>
+		<ul class="locations"></ul>
+	</section>
+</main>
+
+
+
+
+
+
+
+
+
+
+<section class="instructions">
+
+	<header>
+		<p>Exercise: Geolocation API</p>
+	</header>
+
+	<section>
+		<article>
+			<h1>Instructions</h1>
+
+			<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation">Geolocation API</a> is what allows a web page to know where you are. In this intro to geolocation, we will get the latitude & longitude of your device and print it on the page. In future exercises you will build on this code to display your location on a map.</p>
+
+			<p>Remember, a <code>position</code> JSON object is passed to your callback function from the Geolocation API. You'll have to unpack the JSON data to find the latitude & longitude properties. </p>
+
+			<h2>Tasks</h2>
+			<ol>
+				<li>
+					Update the event handler for the button to call getCurrentPosition()
+					<ul>
+						<li>
+							When the button is clicked, the <code>getCurrentPosition()</code> function should be run to start a request for the location.
+						</li>
+						<li>
+							Now, remember, <code>getCurrentPosition()</code> needs to be told what its callback function is. So that everyone names the callback the same, please create a function named <code>geoSuccess</code>. This will be your callback function.
+						</li>
+					</ul>
+				</li>
+				<li>
+					Write the content of the geoSuccess callback function. 
+					<ul>
+						<li>
+							This is the function that will be called when the location is determined.
+						</li>
+						<li>
+							A Geolocation callback is always passed one argument, which is a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Position">Position object</a>.
+						</li>
+						<li>
+							So that everyone names the callback variable the same, please name the one argument <code>position</code>.
+						</li>
+						<li>
+							At this point you must do some debugging to thoroughly understand the json structure of the Position object. You must find the latitude and longitude properties in the position object. And save those two into variables.
+					</ul>
+				</li>
+
+				<li>
+					Write a separate function that will be responsible for printing out the latitude and longitude on the screen. 
+					<ul>
+						<li>
+							This function should be called and passed two arguments: the latitude and longitude variables you just created in the previous step.
+						</li>
+						<li>
+							Technically, the DOM work should be achieved by adding a new &lt;li&gt; element to the list and setting the text of the &lt;li&gt; to be the lat/long.
+						</li>
+						<li>
+							For example:
+							<br>
+							<code>
+							&lt;li&gt;37.76341336916038, -122.41807504195602&lt;/li&gt;
+							</code>
+						</li>
+						<li>Note: as part of the starter code, the parent list Element has already been stored in a variable named <code>locations</code>.
+					</ul>
+				</li>
+			</ol>
+
+			<h2>Tips</h2>
+			<p>It *may* be helpful to do the last step first. Step 3 is just a <em>"give me some data and I'll create some DOM Elements"</em> kinda function. This is something we've already done and you can fake it and hardcode the two values for latitude and longitude to test it works first. Even by just calling it at the console and passing two values.</p>
+			<p>This might prove to be a rewarding chunk to knock out first.</p>
+
+		</article>
+
+		<aside>
+			<h2>This exercise draws the following skills</h2>
+			<ul>
+				<li>geolocation</li>
+				<li>callbacks</li>
+				<li>JSON data structure</li>
+				<li>creating elements</li>
+				<li>concatenation</li>
+			</ul>
+		</aside>
+	</section>
+</section>
+
+
+<script src="js/geolocation.js"></script>
+</body>
+</html>
