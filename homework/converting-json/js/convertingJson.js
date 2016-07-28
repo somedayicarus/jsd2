@@ -17,9 +17,13 @@ of each of the item titles with the date the photo was taken.
 */
 
 var items = flickerObj.items;
-
+console.log(items);
 for (var x in items) {
+	if(items[x].title === "") {
+		console.log("Untitled " + items[x].date_taken);
+	} else {
 	console.log(items[x].title  + " " + items[x].date_taken);
+	}	
 };
 
 /*
