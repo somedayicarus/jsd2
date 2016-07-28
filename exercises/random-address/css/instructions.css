@@ -1,0 +1,71 @@
+.instructions {
+	width: 90%;
+	margin: 60px auto 30px;
+	background: #DEDEDE;
+	border: 1px solid #444;
+	font-family: "Gill Sans", sans-serif;
+	color: #444;
+}
+.instructions code {
+	font-family: "Courier New", monospace;
+	border: 1px solid #DBB;
+	padding: 0 5px;
+}
+.instructions header {
+	background: #444;
+	color: #DEDEDE;
+	padding: 10px 20px;
+	font-size: 18px;
+}
+.instructions section {
+	display: flex;
+}
+.instructions article {
+	flex: 4;
+	padding: 20px;
+}
+.instructions aside {
+	flex: 1;
+	padding: 20px;
+}
+.instructions h1 {
+	font-weight: bold;
+	font-size: 24px;
+}
+.instructions h2 {
+	font-weight: bold;
+	font-size: 18px;
+	margin-top: 15px;
+}
+.instructions li {
+	margin-left: 30px;
+}
+.instructions ul > li {
+	list-style-type: disc;
+}
+.instructions ol > li {
+	list-style-type: decimal;
+}
+.instructions section p {
+	margin-top: 15px;
+}
+.instructions section ul,
+.instructions section ol {
+	margin: 10px 0;
+}
+
+@media (max-width: 500px) {
+	.instructions {
+		width: 100%;
+		border-right: 0;
+		border-left: 0;
+	}
+	.instructions section {
+		flex-direction: column;
+	}
+	.instructions header,
+	.instructions article,
+	.instructions aside {
+		padding: 10px;
+	}
+}
