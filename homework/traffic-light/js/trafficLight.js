@@ -14,7 +14,7 @@ var blinking;
 stop.addEventListener("click", redLight);
 slow.addEventListener("click", yellowLight);
 go.addEventListener("click", greenLight);
-caution.addEventListener("click", blinkingLight);
+caution.addEventListener("click", blinkingYellow);
 
 
 // Event handlers
@@ -37,8 +37,9 @@ function greenLight(e) {
 	trafficLight.classList.add("go");
 };
 
-function blinkingLight(e) {
+function blinkingYellow(e) {
 	trafficLight.classList.remove("go", "stop", "slow");
+	trafficLight.classList.add("slow");
 	blinking = setInterval(toggleYellow, 1000);
 };
 
