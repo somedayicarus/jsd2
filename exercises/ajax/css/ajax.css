@@ -5,3 +5,8 @@ body {
 	width:70%;
 	margin:60px auto;
 }
+a {
+	color:#890bbf;
+	font-weight: bold;
+	text-decoration: none;
+}
