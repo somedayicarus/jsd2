@@ -92,3 +92,25 @@ button {
 	border-top-width: 0;
 	background-color: rgb(91,70,2);
 }
+
+
+/* home unicorn */
+
+header {
+	margin:40px 0;
+	text-align: center;
+}
+
+.home-btn {
+  text-decoration: none;
+  padding:20px ;
+}
+.home-btn img {
+  width:25px;
+  vertical-align: bottom;
+}
+
+.home-btn:hover {
+  /* background-color:white; */
+  background-image:url('../../../images/sparkle_silver.gif');
+}

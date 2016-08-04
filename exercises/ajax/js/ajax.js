@@ -18,5 +18,6 @@ function handleData(json) {
 		var li = document.createElement("li");
 		li.innerHTML = item["description"];
 		ul.appendChild(li);
+		li.classList.add(item["id"])
 	}
 };
