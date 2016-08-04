@@ -37,6 +37,7 @@ function greenLight(e) {
 };
 
 function blinkingYellow(e) {
+	clearInterval(blinking);
 	trafficLight.classList.remove("go", "stop", "slow");
 	trafficLight.classList.add("slow");
 	blinking = setInterval(toggleYellow, 1000);
@@ -45,5 +46,7 @@ function blinkingYellow(e) {
 function toggleYellow(e) {
 	trafficLight.classList.toggle("slow");
 };
+
+
 
 
