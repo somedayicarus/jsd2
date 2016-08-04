@@ -5,7 +5,6 @@ var stop = document.querySelector(".stop-button");
 var slow = document.querySelector(".slow-button");
 var go = document.querySelector(".go-button");
 var caution = document.querySelector(".caution-button");
-var stopLight = document.querySelector(".stop-light");
 var trafficLight = document.querySelector("#traffic-light");
 var blinking;
 
