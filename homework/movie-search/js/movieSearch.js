@@ -15,7 +15,7 @@ form.addEventListener("submit", getData);
 function getData(e) {
 	e.preventDefault();
 	console.log(e);
-	OMDbAPI = "http://www.omdbapi.com/?s=" + search.value;;
+	OMDbAPI = "https://www.omdbapi.com/?s=" + search.value;;
 	$.getJSON(OMDbAPI, handleData);
 }
 
