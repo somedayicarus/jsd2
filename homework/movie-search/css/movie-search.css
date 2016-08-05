@@ -24,3 +24,23 @@ button {
 }
 
 
+/* home btn */
+/* -------------------------------- */
+
+header {
+	margin:25px 0;
+}
+
+.home-btn {
+  text-decoration: none;
+  padding:20px ;
+}
+.home-btn img {
+  width:25px;
+  vertical-align: bottom;
+}
+
+.home-btn:hover {
+  /* background-color:white; */
+  background-image:url('../../../images/sparkle_silver.gif');
+}
