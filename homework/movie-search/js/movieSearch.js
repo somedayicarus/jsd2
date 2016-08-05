@@ -23,7 +23,15 @@ function handleData(json) {
 	//clear previous search results
 	results.innerHTML = "";
 	img.src = "";
-	json["Search"].forEach(listResults);
+	console.log(json);
+	if(json["Response"] === "False") {
+		var li = document.createElement("li");
+		li.textContent = json["Error"];
+		li.classList.add("not-found");
+		results.appendChild(li);
+	} else {
+		json["Search"].forEach(listResults);
+	}
 }
 
 function listResults(movie) {
