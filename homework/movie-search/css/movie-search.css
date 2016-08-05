@@ -1,0 +1,21 @@
+/* Layout */
+/* -------------------------------- */
+body {
+	background: #FFF0AA;
+	min-width: 320px;
+	max-width: 375px;
+	padding: 20px;
+}
+
+ul {
+	margin:20px;
+}
+
+/* Typography */
+/* -------------------------------- */
+body,
+button {
+	font-family: "AvenirNext-Regular", sans-serif;
+}
+
+
