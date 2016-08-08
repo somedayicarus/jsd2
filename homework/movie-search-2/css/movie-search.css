@@ -1,0 +1,171 @@
+/* Layout */
+/* -------------------------------- */
+body {
+	background: #F8DFA2;
+	min-width: 320px;
+	max-width: 375px;
+}
+
+
+/* Typography */
+/* -------------------------------- */
+body,
+button {
+	font-family: "AvenirNext-Regular", sans-serif;
+	color: #905B50;
+}
+h1,
+button {
+	font-family: "Limelight", "AvenirNext-Regular", sans-serif;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+	color: #AA353B;
+}
+
+/* Main section */
+/* -------------------------------- */
+main {
+	border: 1px solid #603E3B;
+	position: relative;
+	margin: 15px;
+}
+main::before {
+	content: "";
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	right: -5px;
+	bottom: -5px;
+	border: 2px solid #603E3B;
+	pointer-events: none;
+}
+
+
+/* Header */
+/* -------------------------------- */
+h1 {
+	margin: 10px;
+	text-align: center;
+	font-size: 28px;
+}
+
+
+/* Form */
+/* -------------------------------- */
+form {
+	display: flex;
+	margin: 10px;
+	justify-content: space-between;
+}
+input,
+button {
+	line-height: 22px;
+	padding: 4px 12px;
+	display: block;
+	outline: none;
+	-webkit-transition: all 75ms ease-in-out;
+	transition: all 75ms ease-in-out;
+}
+input {
+	flex: 1;
+	border: 1px solid #905B50;
+	background: #FFFAE5;
+}
+input:active,
+input:focus,
+button:focus {
+	box-shadow: 0 0 3px 1px #905B50;
+	border: 1px solid #905B50;
+}
+button {
+	background: #4F565E;
+	color: #F7DEA1;
+	border: 1px solid #905B50;
+	font-size: 18px;
+	line-height: 22px;
+	margin-left: 10px;
+}
+
+
+/* Movie Details */
+/* -------------------------------- */
+.details.hide {
+	display: none;
+}
+.details {
+	margin: 10px;
+	display: flex;
+}
+.details img {
+	display: block;
+	margin-right: 10px;
+	width: 100px;
+}
+.details h2 {
+	font-size: 14px;
+}
+.details p {
+	font-size: 12px;
+}
+
+/* Search Results */
+/* -------------------------------- */
+.results {
+	margin-top: 20px;
+}
+.results li {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 5px 0;
+	margin: 0 10px;
+}
+.results li {
+	border-top: 1px solid #905B50;
+}
+.results img {
+	margin-right: 10px;
+	width: 30px;
+}
+.results p {
+	flex: 1;
+	font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------- */
+/* Homework Questions */
+/* -------------------------------- */
+.questions.hide {
+	display: none;
+}
+.questions {
+	margin: 35px 15px;
+	font-size: 14px;
+}
+.questions h6 {
+	text-align: center;
+	font-size: 22px;
+}
+.questions p {
+	margin-top: 5px;
+}
+.questions .question {
+	margin: 20px 0 10px;
+}
+.questions .answer {
+	margin: 10px 0;
+	font-weight: bold;
+}
