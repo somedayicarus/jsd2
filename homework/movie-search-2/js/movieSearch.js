@@ -1,4 +1,11 @@
 
+// Setup
+// ----------------------------------------------
+var posterNotFound = "images/poster-not-found.png";
+var li;
+var OMDbAPI;
+
+
 // Structure
 // ----------------------------------------------
 var results = document.querySelector(".results")
@@ -7,14 +14,11 @@ var form = document.querySelector("form");
 var img = document.querySelector(".poster");
 var poster = document.querySelector(".image");
 var details = document.querySelector(".text");
-var posterNotFound = "images/poster-not-found.png";
-var li;
-var OMDbAPI;
+
 
 // Events
 // ----------------------------------------------
 form.addEventListener("submit", getMovies);
-//results.addEventListener("click", getDetails)
 
 
 // Event handlers
@@ -22,10 +26,9 @@ form.addEventListener("submit", getMovies);
 //on click, request json and call dispalyResults
 function getMovies(e) {
 	e.preventDefault();
-	console.log(e);
 	OMDbAPI = "https://www.omdbapi.com/?s=" + search.value;
 	$.getJSON(OMDbAPI, displayResults);
-}
+};
 
 //interate over json array and call listResults on each object
 function displayResults(json) {
@@ -33,8 +36,7 @@ function displayResults(json) {
 	results.innerHTML = "";
 	poster.innerHTML = "";
 	details.innerHTML = "";
-	
-	console.log(json);
+
 	if(json["Response"] === "False") {
 		var li = document.createElement("li");
 		li.textContent = json["Error"];
@@ -44,13 +46,12 @@ function displayResults(json) {
 		json["Search"].forEach(listResults);
 	}
 
-	//
+	//add event listeners to new li elements
 	li = document.querySelectorAll("li");
 	li.forEach(function(i) {
 		i.addEventListener("click", getDetails);
-	})
-
-}
+	});
+};
 
 //when passed movie object - create list items with each movies properties
 function listResults(movie) {
@@ -79,19 +80,23 @@ function listResults(movie) {
 
 //on click, request details for clicked movie and call displayDetail
 function getDetails(e) {
+	e.preventDefault();
+
 	OMDbAPI = "https://www.omdbapi.com/?i=" + e.currentTarget.id;
+	$.getJSON(OMDbAPI, listDetail);
 
 	poster.innerHTML = "";
 	details.innerHTML = "";
-	$.getJSON(OMDbAPI, listDetail);
 }
 
-//
 
 //when passed movie detail object - create elements
 function listDetail(json) {
 	console.log(json);
 
+	if(json["Response"] === "False") {
+		console.log(json["Error"]);
+	} else {
 	//create elements
 	var img = document.createElement("img");
 	var h2 = document.createElement("h2");
@@ -118,6 +123,7 @@ function listDetail(json) {
 	details.appendChild(p1);
 	p2.appendChild(a);
 	details.appendChild(p2);
+	}
 };
 
 
