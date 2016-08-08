@@ -107,6 +107,7 @@ function listDetail(json) {
 	//add content
 	a.appendChild(aText);
 	h2.textContent = json["Title"];
+	a.target = "_blank";
 	a.href = "http://www.imdb.com/title/" + json["imdbID"];
 	p1.textContent = json["Plot"];
 
