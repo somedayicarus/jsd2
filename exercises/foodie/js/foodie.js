@@ -1,11 +1,20 @@
 // Structure
 // ------------------------------------
 var results = document.querySelector(".results");
-var openTableAPI = "http://opentable.herokuapp.com/api";
+var form = document.querySelector("form");
+var zip = document.querySelector(".zip");
+
+function getRestaurants(e) {
+	e.preventDefault(e);
+	var search = zip.value;
+	console.log(search); 
+	var url = "http://opentable.herokuapp.com/api/restaurants?zip=" + search;
+	$.getJSON(url, updateRestaurants);
+};
 
 // Events
 // ------------------------------------
-
+form.addEventListener("submit", getRestaurants);
 
 // Event Handler 
 // ------------------------------------
@@ -14,7 +23,8 @@ var openTableAPI = "http://opentable.herokuapp.com/api";
 // Update page
 // ------------------------------------
 function updateRestaurants(json) {
-	json.forEach(createRestaurant);
+	results.innerHTML = "";
+	json["restaurants"].forEach(createRestaurant);
 };
 
 function createRestaurant(restaurant) {
@@ -26,7 +36,7 @@ function createRestaurant(restaurant) {
 	var p = document.createElement("p");
 
 	// add content 
-	img.src = restaurant.image;
+	img.src = restaurant.image_url;
 	h2.textContent = restaurant.name;
 	p.textContent = restaurant.address;
 
@@ -37,25 +47,6 @@ function createRestaurant(restaurant) {
 	li.appendChild(p);
 };
 
-var ramen = {
-	name: "Best Ramen",
-	address: "1 Delicious Ln, Tokyo, Japan",
-	image: "http://greatist.com/sites/default/files/styles/big_share/public/SlowCooker-Pork-Ramen_0.jpg?itok=kvBKeje7"
-};
-
-var pizza = {
-	name: "Best Pizza",
-	address: "3 Pizzeria Ln, Rome, Italy",
-	image: "https://www.pizzahut.com/assets/w/tile/thor/Pepperoni_Lovers_Pizza.png"
-};
-
-var dessert = {
-	name: "Best Dessert",
-	address: "6 Yum Ln, San Francisco, CA",
-	image: "http://www.craveamerica.com/wp-content/uploads/2015/10/dessert.jpg"
-};
-
-var restaurants = [ramen, pizza, dessert];
 
 
 
