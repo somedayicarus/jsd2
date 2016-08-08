@@ -92,7 +92,6 @@ function getDetails(e) {
 
 //when passed movie detail object - create elements
 function listDetail(json) {
-	console.log(json);
 
 	if(json["Response"] === "False") {
 		console.log(json["Error"]);
