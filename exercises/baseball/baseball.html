@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Baseball Schedule</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/baseball.css">
+	<link rel="stylesheet" href="css/instructions.css">
+</head>
+<body>
+
+
+<main>
+	<header>
+		<h1>Baseball Lab</h1>
+	</header>
+
+	<section>
+		<div class="date"></div>
+
+		<ul class="games"></ul>
+
+	</section>
+</main>
+
+
+<script type="text/x-handlebars-template" id="date-template">
+	<h2>{{dateDisplay}}</h2>
+</script>
+
+<script type="text/x-handelbars-tempalte" id="game-template">
+	{{#each this}}
+	<li class="game">
+				<p class="time">{{time}}</p>
+
+				<div class="team home">
+					<div>
+						<img src="https://ssl.gstatic.com/onebox/media/sports/logos/ey32o-rV1MBGbst3pFB_sg_56x42.png">
+						<p class="name">{{home.name}}</p>
+					</div>
+
+					<div class="record">
+						({{home.wins}}-{{home.losses}})
+					</div>
+				</div>
+
+				<div class="team away">
+					<div>
+						<img src="https://ssl.gstatic.com/onebox/media/sports/logos/4E3uuwhG5inhsSdR1NPa6Q_56x42.png">
+						<p class="name">{{away.name}}</p>
+					</div>
+					<div class="record">
+						({{away.wins}}-{{away.losses}})
+					</div>
+				</div>
+			</li>
+	{{/each}}
+
+</script>
+
+
+<section class="instructions">
+
+	<header>
+		<p>Lab: Baseball Game Schedule</p>
+	</header>
+
+	<section>
+		<article>
+			<h1>Instructions</h1>
+
+			<p>Create two Handlebars templates. One for the date at the top, and one for each game. The second one will loop over an array using <code>#each</code> to create one game for each item in the <code>games</code> array.</p>
+
+			<h2>Tasks</h2>
+			<ol>
+				<li>Create the Handlebars template in the HTML using a <code>script</code> tag. Give this one an ID of <code>date-template</code>. Follow the "Date markup" structure below.</li>
+				<li>Write the JS to get the template code, compile it, and insert it's new HTML into the <code>"date"</code> div element.
+				</li>
+				<li>
+				Next step, getting a bit harder here with the each loop. Write a second Handlebars template for each game. Give this one an ID of <code>game-template</code>. Follow the "Game markup" structure below. 
+				</li>
+				<li>Write the JS to compile the template and insert the HTML into the "games" UL element.
+				</li>
+			</ol>
+
+			<h2>Date markup</h2>
+<pre>
+&lt;h2&gt;Sat, Aug 20, 2016&lt;/h2&gt;
+</pre>
+			<h2>Game markup</h2>
+
+<pre>
+&lt;li class="game"&gt;
+	&lt;p class="time"&gt;7:05pm ET&lt;/p&gt;
+	&lt;div class="team home"&gt;
+		&lt;div&gt;
+			&lt;img src="https://ssl.gstatic.com/onebox/media/sports/logos/ey32o-rV1MBGbst3pFB_sg_56x42.png"&gt;
+			&lt;p class="name"&gt;Astros&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div class="record"&gt;
+			(63-47)
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="team away"&gt;
+		&lt;div&gt;
+			&lt;img src="https://ssl.gstatic.com/onebox/media/sports/logos/4E3uuwhG5inhsSdR1NPa6Q_56x42.png"&gt;
+			&lt;p class="name"&gt;Orioles&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div class="record"&gt;
+			(50-62)
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/li&gt;
+</pre>
+		</article>
+
+		<aside>
+			<h2>This exercise draws the following skills</h2>
+			<ul>
+				<li>Handlebars</li>
+				<li>JSON</li>
+			</ul>
+		</aside>
+	</section>
+</section>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+<script src="js/mockdata.js"></script>
+<script src="js/baseball.js"></script>
+</body>
+</html>

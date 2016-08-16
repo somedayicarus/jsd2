@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Foodie</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/foodie.css">
+</head>
+<body>
+
+<h1>Foodie</h1>
+
+<form>
+	<input class="zip" placeholder="Zip code">
+</form>
+
+<div id="total-results"></div>
+
+<ul class="results"></ul>
+
+
+<script type="text/x-handlebars-template" id="header-template">
+	<p>{{total_entries}} results found in {{restaurants.0.postal_code}}</p>
+</script>
+
+<script type="text/x-handlebars-template" id="restaurant-template">
+	{{#each this}}
+		<li>
+			<img src="{{image_url}}">
+			<h2>{{name}}</h2>
+			<p>{{address}}</p>
+			<p><a href="{{reserve_url}}">Make a Reservation</a></p>
+		</li>
+	{{/each}}
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+<script src="js/content.js"></script>
+<script src="js/foodie.js"></script>
+
+</body>
+</html>

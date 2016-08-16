@@ -1,0 +1,79 @@
+/* Layout / Typography
+---------------------------------------------- */
+body {
+	color: #DEDEDE;
+	background: #363B3F;
+	font-family: "Arvo", sans-serif;
+	font-size: 16px;
+}
+
+
+/* Layout
+---------------------------------------------- */
+body {
+	margin: auto;
+	padding-bottom: 150px;
+}
+
+
+/* Header
+---------------------------------------------- */
+main {
+	max-width: 550px;
+	min-width: 320px;
+}
+main header {
+	padding: 8px 24px;
+	border-bottom: 2px solid #7788AA;
+	border-radius: 4px;
+}
+main header h1 {
+	color: #7788AA;
+	text-align: center;
+}
+
+
+/* Main section
+---------------------------------------------- */
+main > section {
+	padding: 16px;
+}
+
+
+/* Date
+---------------------------------------------- */
+.date {
+	border: 1px solid #9A9A9A;
+	border-radius: 4px;
+	padding: 4px;
+	text-align: center;
+}
+
+
+/* Game
+---------------------------------------------- */
+.games {
+	margin-top: 20px;
+}
+.game {
+	margin-top: 12px;
+	border: 1px solid #9A9A9A;
+	border-radius: 4px;
+}
+.game .time {
+	padding: 6px;
+}
+.game .team {
+	display: flex;
+	padding: 6px;
+	justify-content: space-between;
+	border-top: 1px solid #9A9A9A;
+}
+.game .team > div {
+	display: flex;
+	align-items: center;
+}
+.game .team img {
+	width: 32px;
+	vertical-align: middle;
+}
