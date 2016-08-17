@@ -8,10 +8,9 @@ var OMDbAPI;
 
 // Structure
 // ----------------------------------------------
-var results = document.querySelector(".results")
+var results = document.querySelector(".results");
 var search = document.querySelector(".search");
 var form = document.querySelector("form");
-var img = document.querySelector(".poster");
 var poster = document.querySelector(".image");
 var details = document.querySelector(".text");
 
@@ -130,5 +129,7 @@ function listDetail(json) {
 		details.appendChild(p2);
 	}
 };
+
+
 
 

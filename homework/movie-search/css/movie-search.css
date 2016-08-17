@@ -135,6 +135,12 @@ button {
 	font-size: 14px;
 }
 
+.results .not-found {
+	font-style: italic;
+	cursor: default;
+	color: #e20b0b;
+}
+
 
 /* -------------------------------- */
 /* Homework Questions */
@@ -183,7 +189,3 @@ header {
   background-image:url('../../../images/sparkle_silver.gif');
 }
 
-.results .not-found {
-	font-style: italic;
-	cursor: default;
-}
