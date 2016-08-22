@@ -3,6 +3,7 @@
 var form = document.querySelector("#message-form"); 
 var post = document.querySelector("#message");
 var messageBoard = document.querySelector(".message-board");
+var messageTemplate = document.querySelector("#messages-template");
 
 
 // Setup
@@ -36,9 +37,9 @@ function addMessage(event) {
     	voteCount: 0
     };
 
-    createPost(message);
 
     app.messages.push(message);
+    createPost(app);
     saveApp();
 
     post.value = "";
@@ -74,6 +75,7 @@ function deletePost(event) {
 	if(event.target.className != "fa fa-trash pull-right delete") {
 		return
 	}
+    console.log(event.target);
 	var listID = event.target.closest("li").dataset.id;
 	app.messages.forEach(function(item) {
 		//delete matched message
@@ -85,17 +87,21 @@ function deletePost(event) {
 
 	saveApp();
 }
+
 // Update page functions
 // ------------------------------------------------
-function createPost(message) {    
+function createPost(app) {
+    var template = Handlebars.compile(messageTemplate.innerHTML);
+    messageBoard.innerHTML = template(app.messages);
+    
+ 
     // Step 1: create new html
     // ----------------------------------------------------------------
-    var li         = document.createElement("li"),
+    /*var li         = document.createElement("li"),
         trash      = document.createElement("i"),
         thumbsUp   = document.createElement("i"),
         thumbsDown = document.createElement("i");
         voteCount  = document.createElement("div");
-
 
     // Step 2: add event listeners, attributes, and content to new html
     // ----------------------------------------------------------------
@@ -113,7 +119,7 @@ function createPost(message) {
     li.appendChild(thumbsUp);
     li.appendChild(thumbsDown);
     li.appendChild(voteCount);
-    messageBoard.appendChild(li);
+    messageBoard.appendChild(li);*/
 };
 
 
@@ -128,7 +134,8 @@ function dataChanged(snapshot) {
     app = snapshot.val();
 
     messageBoard.innerHTML = "";
-    app.messages.forEach(createPost);
+   createPost(app);
+   
 };
 
 function getApp() {

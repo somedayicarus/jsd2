@@ -75,15 +75,22 @@
         <div class="panel-heading">Message Board</div>
         <div class="panel-body">
           <ul class="message-board">
-            <!-- 
-             <li>New post. Yes!!<i class="fa fa-trash pull-right delete"></i><i class="fa fa-thumbs-up pull-right"></i><i class="fa fa-thumbs-down pull-right"></i><div class="pull-right">0</div></li>
-            -->
+
+            <script type="text/x-handlebars-tempalte" id="messages-template">
+
+              {{#each this}}
+                <li data-id="{{id}}">{{content}}<i class="fa fa-trash pull-right delete"></i><i class="fa fa-thumbs-up pull-right"></i><i class="fa fa-thumbs-down pull-right"></i><div class="pull-right">{{voteCount}}</div></li>
+              {{/each}}
+
+            </script>
+
           </ul>
         </div>
       </div>
     </div>
 
   </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
 <script src="js/fan.js"></script>
 </body>
 
