@@ -18,6 +18,8 @@ var firebaseRef = new Firebase("https://message-board-83c31.firebaseio.com/");
 // ------------------------------------------------
 window.addEventListener("load", getApp);
 form.addEventListener("submit", addMessage);
+messageBoard.addEventListener("click", upVote);
+messageBoard.addEventListener("click", deletePost);
 
 
 
@@ -45,21 +47,44 @@ function addMessage(event) {
 
 
 function upVote(event) {
-	console.log(event.target)
+	event.preventDefault();
+
+	//disregard clicks on anything but thumbs up icon
+	if(event.target.className != "fa fa-thumbs-up pull-right") {
+		return
+	}
+
+	//check clicked list id against message id
 	var listID = event.target.closest("li").dataset.id;
 
-	//console.log(listID);
-
-
 	app.messages.forEach(function(item) {
+		//update votecount for matched message
 		if(item.id === listID)	{
 			item.voteCount += 1;
 		}
-	})
+	});
+
+	//run to update votecount in firebase
     saveApp();
 };
 
+function deletePost(event) {
+	event.preventDefault();
+	//disregard events on anything but trash icon
+	if(event.target.className != "fa fa-trash pull-right delete") {
+		return
+	}
+	var listID = event.target.closest("li").dataset.id;
+	app.messages.forEach(function(item) {
+		//delete matched message
+		if(item.id === listID)	{
+			var index = app.messages.indexOf(item);
+			app.messages.splice(index, 1);
+		}
+	});
 
+	saveApp();
+}
 // Update page functions
 // ------------------------------------------------
 function createPost(message) {    
@@ -82,10 +107,6 @@ function createPost(message) {
     voteCount.classList.add("pull-right");
     voteCount.textContent = message.voteCount;
 
-    li.addEventListener("click", upVote);
-    //trash.addEventListener("click", deletePost)
-
-
     // Step 3: add new html to DOM
     // ----------------------------------------------------------------
     li.appendChild(trash);
@@ -93,15 +114,6 @@ function createPost(message) {
     li.appendChild(thumbsDown);
     li.appendChild(voteCount);
     messageBoard.appendChild(li);
-
-    // Optionally, add a due date if one was set
-    //if (item.date !== undefined && item.date.length > 0) {
-    //    var time = document.createElement("time");
-    //    time.textContent = "(" + item.date + ")";
-    //    li.appendChild(time);
-    //}
-
-    //list.appendChild(li);
 };
 
 
