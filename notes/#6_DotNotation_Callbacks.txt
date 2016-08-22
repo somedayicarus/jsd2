@@ -1,0 +1,67 @@
+Dot // Bracket Notation for Objects
+	
+	Property Access: 
+	1. Dot Notation
+	Syntax: object.property > car.make
+	Limitations:
+		Only works with valid variable names as properties (includ only A-Z, $, _)
+		property must start with a letter
+
+	2. Bracket Notation 
+	Syntax: object["property"] > car["make"]
+	Limitations: 
+		expects a string, or it will coerce to a string 
+		Use it when the property name is a number, like an Array
+		Use when the property contains special characters like a space > car["is running"]
+		When property is a variable
+
+	*Best Practice: When you don't have control over the variables (like when using an API) use Bracket 
+	notation. 
+
+3 Main Root Host Object
+
+	Window Object
+		
+		In Client Side JS, all objects must live in a namespace
+		The Root namespace is the window object
+		(dumping ground)
+		** If you don't put a leading object (document.example / JSON.example). then the window root object is assumed.
+		- if its in the global namespace, it means its in the window object
+		
+		Exammples: setTimeout / alert / JSON / Math 
+
+
+	Document Object
+
+		All DOM (Document Object Model) related objects, properties, and functions live 
+		Examples: appendChild / addEventListener / 
+
+	Navigator Object
+
+		Contains properties about your browser
+		Examples: navigator.appName / appVersion / geoLocation / onLine
+
+
+Callbacks
+	
+	window.setTimeout(func, delay-in-ms)
+
+	Basic use example:
+
+	function boom() {
+		console.log("BOOM!");
+	}
+
+	window.setTimeout(boom, 4000);
+
+	This calls the function one time after the specified delay
+
+	------
+
+	window.setInterval(func, delay)
+	Calls function infinite amount of times, but calls the callback function x ms where x is the delay
+
+
+
+
+

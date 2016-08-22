@@ -1,0 +1,64 @@
+
+Control Flow
+
+	The browser does 2 thins with your javascript
+	1. Reads your code
+		finds syntax errors // typos // hidden functions
+		your code is read from top to bottom
+		and from left to right
+	2. Executes your code
+		runs all code that is not in a function 
+		top to bottom & left to right
+		finds runtime (or execution) errors
+
+Function 
+	- group of code that is only run when called by name
+	- has a name/identifier
+	- can execute/run multiple times
+	- takes inputs and has an output
+
+P-arameters = P for "Placeholders" or "Parking spaces" // subtract(x, y)
+A-rguments = A for "Actual" or "Automobile" // subtract(10, 7)
+
+<------------------------------------------------------------>			
+<---- Homework: Write 4 Functions that make calculations ---->
+<------------------------------------------------------------>
+
+Things you can do with a Function 
+	1. Create (or Define) it:
+
+		function functionName() {
+			return x;
+		};
+
+	2. Call it:
+
+		functionName();
+
+	3. Reference: 
+
+		functionName;
+
+Things you can do with Variables
+	1. Create:
+
+		var variableName;
+		var variableName = "This is a string"; 
+
+		if unassigned, initial value = 'undefined'
+		can be assigned a value:
+
+	2. Use/Reference:
+
+		var newVariable = variableName + " " + otherVariable
+
+
+Same naming rules for both functions & variables 
+	RULES
+	- must start with letter (up or lc) or $ or _
+	- remaining characters can be letters (up or lc), numbers, $, or _
+
+	BEST PRACTICES
+	- never use spaces in names
+	- use lower camelCase
+	- example: firstWordSecondWord

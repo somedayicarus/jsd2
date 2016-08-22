@@ -1,0 +1,6 @@
+Agenda:
+1. LocalStorage
+2. Firebase
+
+
+Local Storage

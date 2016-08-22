@@ -1,0 +1,39 @@
+Switch Statements 
+	Used for branching code
+	if/else used for different
+	switched is used for checking value of one variable
+	Usually a string/number
+	can have an optional default case - similar to 'else' in if/else statement
+	use break statement to manage fallthrough
+
+	Syntax: 
+	switch (variable) {
+		case "variation 1":
+		...
+
+		break
+		case "variation 2":
+		...
+
+		break
+		default:
+	}
+
+
+Objects & JSON
+	
+	Objects
+	- are composed of/consist of/contain two types of things:
+	1. Properties
+	2. Functions (aka Methods)
+
+	There are three 'buckets' of objects
+	1. Native Objects
+		Math
+		console
+	2. Host Environment
+		window
+		document
+	3. User/Yours (tend to be representations of real life things)
+		users
+		event

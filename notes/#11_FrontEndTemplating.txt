@@ -1,0 +1,13 @@
+Handlebars
+
+1. Template Source 
+- Script tag with custom type attribute for handlebars
+- elements: get the script, assign it to variable
+
+2. Compile Template
+- Takes source, compiles it, creates handlebars template
+- handlesbars.compile
+
+3. Evaluating the JSON to HTML
+- Context, aka JSON Data
+- Combine JSON with Template to return HTML

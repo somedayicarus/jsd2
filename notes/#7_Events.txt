@@ -1,0 +1,52 @@
+
+Events - Type of Object 
+	All have a Type and Target property
+
+
+Common Methods on Element Objects:
+	.appendChild()
+	.addEventListener()
+
+Popular Events in Client/Browser
+
+	MouseEvent: 
+		click
+		dblclick
+		mouseup
+		mousedown
+
+	KeyboardEvent:
+		keydown
+		keypress
+		keyup
+
+	UIEvent:
+		load
+		DOMContentLoaded
+		beforeunload
+
+	TouchEvent v PointerEvent:
+		touchstart
+		touchmove
+		touchend
+
+>> The Target of An Event is an Element <<
+.. All Events Occur on an Element. The element that the event is acting on is called the Target. 
+
+Event Listener 
+	Listens for a certain type of event 
+	Listens for that event to be dispatched 
+	(aka occur) on a certain element
+
+Remember: JavaScript is asynchronous - means that things occur at different times
+
+Element.addEventListener("EventType", CallbackFunction) 
+	eg: 
+	h1.addEventListener("click", handleClickEvent);
+
+Event.preventDefault()	- called on event
+
+You can dispatch events manually, or the browser will dispatch the event based on the interaction with the page
+
+The callback function is passed the Event Object as the 1st argument 
+

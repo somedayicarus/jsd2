@@ -1,0 +1,29 @@
+body {
+	background: #F7EFED;
+}
+
+.container {
+	border: none;
+	box-shadow: none;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+.line-two {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.item-name,
+section {
+	width: 100%;
+}
+.item-due-date {
+	width: 65%
+}
+.add-item-button {
+	width: 35%;
+}

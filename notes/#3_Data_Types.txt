@@ -1,0 +1,54 @@
+// Data Types //
+
+Strings
+	Syntax - Single or Double Quotes
+	Eg: "this is a string" or 'this is a string'
+
+	Helpers: converting Strings to Numbers
+	parseInt()
+	parseFloat()
+
+Numbers (aka floats, ints)
+	Syntax - none
+	Eg: 994 or 8 or 2390.34
+
+Boolean 
+	Syntax - none
+	Eg: true or false
+
+undefined
+	Syntax - none
+	undefined (an unknown unknown)
+
+null 
+	Syntax - none
+	null (known unknown)
+	The known state of nothing
+
+Array 
+	Syntax - Square Brackets, values seperated by commas, key/values seperated by colons
+	Eg: [1, 2, 3, 4, 5] or ['apple', 'pumpkin', 'pecan', 'berry']
+	Best practice: Arrays should store the same data type and similar types of data. While JS allows for this: [1, 'pies', 4, false] it's not reccomended
+
+Objects
+	Syntax - Curly Braces
+	Eg: 
+	var x =	{
+		key: value,
+		key: value, 
+		key: value
+	}
+
+
+Note: String + Number = String // "100" + 1 = "1001"
+
+Assignment
+	Variable on Left
+	Variable on Right
+	Equal Sign in between 
+	Return is undefined
+	variables can be reassigned values
+
+
+
+

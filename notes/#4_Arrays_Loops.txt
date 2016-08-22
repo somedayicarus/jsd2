@@ -1,0 +1,31 @@
+Arrays
+	MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+	Indexes of arrays start at 0
+
+
+Common Array Methods
+	.length 
+	.push() - adds to the array
+	.pop() - removes something from the array
+	.forEach() - iterates over the array and allows you to do something to each item in the array
+
+.push()
+	Takes one argument - in between parentheses
+	adds one new item to the end of an array and returns the length
+
+
+.pop() 
+	Takes no arguments
+	removes the last element from an array and returns the removed value
+
+.forEach() 
+	executes the provided callback function once for each element present in the array. 
+
+	each time the function is called, the next item is passed as the callback function parameter
+
+
+Callback Functions
+	- a function name that is called later
+	- called by the browser
+	- called when something happens
