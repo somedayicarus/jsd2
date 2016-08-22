@@ -93,33 +93,6 @@ function deletePost(event) {
 function createPost(app) {
     var template = Handlebars.compile(messageTemplate.innerHTML);
     messageBoard.innerHTML = template(app.messages);
-    
- 
-    // Step 1: create new html
-    // ----------------------------------------------------------------
-    /*var li         = document.createElement("li"),
-        trash      = document.createElement("i"),
-        thumbsUp   = document.createElement("i"),
-        thumbsDown = document.createElement("i");
-        voteCount  = document.createElement("div");
-
-    // Step 2: add event listeners, attributes, and content to new html
-    // ----------------------------------------------------------------
-    li.textContent = message.content;
-    li.dataset.id = message.id;
-    trash.classList.add("fa", "fa-trash", "pull-right", "delete");
-    thumbsUp.classList.add("fa", "fa-thumbs-up", "pull-right");
-    thumbsDown.classList.add("fa", "fa-thumbs-down", "pull-right");
-    voteCount.classList.add("pull-right");
-    voteCount.textContent = message.voteCount;
-
-    // Step 3: add new html to DOM
-    // ----------------------------------------------------------------
-    li.appendChild(trash);
-    li.appendChild(thumbsUp);
-    li.appendChild(thumbsDown);
-    li.appendChild(voteCount);
-    messageBoard.appendChild(li);*/
 };
 
 
