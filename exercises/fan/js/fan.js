@@ -5,7 +5,6 @@ var post = document.querySelector("#message");
 var messageBoard = document.querySelector(".message-board");
 var messageTemplate = document.querySelector("#messages-template");
 
-
 // Setup
 // ------------------------------------------------
 var app = {
@@ -20,7 +19,9 @@ var firebaseRef = new Firebase("https://message-board-83c31.firebaseio.com/");
 window.addEventListener("load", getApp);
 form.addEventListener("submit", addMessage);
 messageBoard.addEventListener("click", upVote);
+messageBoard.addEventListener("click", downVote);
 messageBoard.addEventListener("click", deletePost);
+
 
 
 
@@ -77,13 +78,30 @@ function deletePost(event) {
 	}
     console.log(event.target);
 	var listID = event.target.closest("li").dataset.id;
-	app.messages.forEach(function(item) {
+	app.messages.forEach(function(item, index) {
 		//delete matched message
 		if(item.id === listID)	{
-			var index = app.messages.indexOf(item);
 			app.messages.splice(index, 1);
 		}
 	});
+
+	saveApp();
+	createPost(app);
+};
+
+
+function downVote(event) {
+	event.preventDefault();
+
+	var listID = event.target.closest("li").dataset.id;
+	if(event.target.className != "fa fa-thumbs-up pull-right") {
+		app.messages.forEach(function(item) {
+		//update votecount for matched message
+			if(item.id === listID && item.voteCount != 0)	{
+				item.voteCount -= 1;
+			}
+		});
+	}
 
 	saveApp();
 }
@@ -98,26 +116,27 @@ function createPost(app) {
 
 // Firebase Functions
 // ------------------------------------------------
+function saveApp() {
+    firebaseRef.set(app); 
+};
+
 function dataChanged(snapshot) {
 
     if (snapshot.val() === null) {
         return;
     }
-
-    app = snapshot.val();
-
     messageBoard.innerHTML = "";
-   createPost(app);
-   
+    app = snapshot.val();
+    createPost(app);
+    
 };
 
 function getApp() {
     firebaseRef.on("value", dataChanged);
 };
 
-function saveApp() {
-    firebaseRef.set(app); 
-};
+
+
 
 
 //helper functions
