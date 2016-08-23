@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Feeder</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/html5bp.css">
+  <link rel="stylesheet" href="css/feedr.css">
+</head>
+
+<body>
+  <header>
+    <section class="container">
+      <a href="#"><h1>Feedr</h1></a>
+      <nav>
+        <ul>
+          <li><a href="#">News Source: <span>Source Name</span></a>
+            <ul>
+              <script type="text/x-handlebars-tempalte" id="source-template">
+                {{#each this}}
+                <li><a href="#">{{name}}</a></li>
+                {{/each}}
+              </script>
+            </ul>
+          </li>
+        </ul>
+        <section id="search">
+          <input type="text" name="name" value="">
+          <a href="#"><img src="images/search.png" alt="" /></a>
+        </section>
+      </nav>
+      <div class="clearfix"></div>
+    </section>
+  </header>
+  <div id="popUp" class="loader hidden">
+    <a href="#" class="closePopUp">X</a>
+    <div class="container">
+      <h1>Article title here</h1>
+      <p>
+        Article description/content here.
+      </p>
+      <a href="#" class="popUpAction" target="_blank">Read more from source</a>
+    </div>
+  </div>
+
+  <section id="main" class="container">
+
+    <script type="text/x-handlebars-template" id="article-template">
+      {{#each this}}
+        <article class="article" data-url="{{url}}">
+          <section class="featuredImage">
+            <img src="{{urlToImage}}" alt="{{title}}" />
+          </section>
+          <section class="articleContent">
+              <a href="#"><h3>{{title}}</h3></a>
+              <h6>{{author}}</h6>
+          </section>
+          <section class="impressions">
+            1
+          </section>
+          <div class="clearfix"></div>
+        </article>
+      {{/each}}
+    </script>
+
+
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <script src="js/feedr.js"></script>
+
+</body>
+</html>
