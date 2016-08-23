@@ -18,7 +18,7 @@
       <nav>
         <ul>
           <li><a href="#">News Source: <span>Source Name</span></a>
-            <ul>
+            <ul id="menu">
               <script type="text/x-handlebars-tempalte" id="source-template">
                 {{#each this}}
                 <li><a href="#">{{name}}</a></li>
@@ -35,7 +35,7 @@
       <div class="clearfix"></div>
     </section>
   </header>
-  <div id="popUp" class="loader hidden">
+  <div id="popUp" class="loader">
     <a href="#" class="closePopUp">X</a>
     <div class="container">
       <h1>Article title here</h1>

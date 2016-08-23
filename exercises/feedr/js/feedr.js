@@ -1,16 +1,19 @@
-// Setup
+// Structure
 // ------------------------------------------------
 var sourceTemplate = document.querySelector("#source-template");
 var articleTemplate = document.querySelector("#article-template");
 var popup = document.querySelector("#popUp");
 var container = document.querySelector(".container");
 var closePopUp = document.querySelector(".closePopUp");
-var ul = document.querySelector("ul");
-
-// Structure
-// ------------------------------------------------
+var ul = document.querySelector("#menu");
 var main = document.querySelector("#main");
+var span = document.querySelector("span");
+
+// Setup
+// ------------------------------------------------
 var articles;
+var url = "https://newsapi.org/v1/articles?source=techcrunch&apiKey=ce2ae499737a4b28a9618e6b36fa2076";
+span.innerHTML = "TechCrunch";
 
 var sources = [
 	{
@@ -22,12 +25,12 @@ var sources = [
 		path: "the-next-web"
 	},
 	{
-		name: "Buzzfeed",
+		name: "BuzzFeed",
 		path: "buzzfeed"
 	},
 	{
-		name: "Wired",
-		path: "wired-de"
+		name: "Engadget",
+		path: "engadget"
 	},
 	{
 		name: "The New York Times",
@@ -36,49 +39,56 @@ var sources = [
 	{
 		name: "Reddit",
 		path: "reddit-r-all"
+	}, 
+	{
+		name: "Mashable",
+		path: "mashable"
+	},
+	{
+		name: "Hacker News",
+		path: "hacker-news"
 	}
 ];
 
+
+
 // Event Listeners
 // ------------------------------------------------
-window.addEventListener("load", toggleHidden);
-window.addEventListener("load", getJSON);
-window.addEventListener("load", getSources);
+window.addEventListener("load", init);
 main.addEventListener("click", populatePopUp);
-closePopUp.addEventListener("click", toggleHidden)
-
+closePopUp.addEventListener("click", hidePopup)
+ul.addEventListener("click", chooseSource);
 
 
 // Event Handlers
 // ------------------------------------------------
-function getSources(event) {
+function init(e) {
+	timeoutID = window.setTimeout(hidePopup, 1000);
+
+	getJSON(e);
+	getSources(e);
+}
+
+function getSources(e) {
 	var template = Handlebars.compile(sourceTemplate.innerHTML);
 	ul.innerHTML = template(sources);
 }
 
-function getJSON(event) {
-	var url = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=ce2ae499737a4b28a9618e6b36fa2076";
+function getJSON(e) {
 	var jqxhr = $.getJSON(url, displayArticles);
 }
+
 
 function displayArticles(json) {
 	var template = Handlebars.compile(articleTemplate.innerHTML);
 	main.innerHTML = template(json.articles);
 	articles = json.articles;
-
-	if(json.status === "ok") {
-		toggleHidden();
-	}
 }
 
-function toggleHidden(event) {
-	popup.classList.toggle("hidden");
-}
 
-function populatePopUp(event) {
-	event.preventDefault();
-	var clicked = event.target.closest("article");
-	console.log(clicked);
+function populatePopUp(e) {
+	e.preventDefault();
+	var clicked = e.target.closest("article");
 	
 	//create elements
 	var h1 = document.querySelector("#popUp .container h1");
@@ -92,10 +102,39 @@ function populatePopUp(event) {
 			p.textContent = item.description;
 			a.href = item.url;
 
-			popup.classList.remove("loader", "hidden");
+			showSummary();
 		}
 	});
+};
+
+function chooseSource(e) {
+	e.preventDefault();
+	console.log(e.target.innerHTML);
+	var clicked = e.target.innerHTML;
+	span.innerHTML = clicked;
+
+	sources.forEach(function(item) {
+		if(clicked === item.name) {
+			showLoader()
+			var url = "https://newsapi.org/v1/articles?source=" + item.path + "&apiKey=ce2ae499737a4b28a9618e6b36fa2076";
+			var jqxhr = $.getJSON(url, displayArticles);
+			
+			var timeoutID = setTimeout(hidePopup, 1000);
+		}
+	});
+};
+
+
+//show/hide/load timeout functions
+function showSummary() {
+	popup.classList.remove("hidden", "loader");
 }
 
+function showLoader() {
+	popup.classList.remove("hidden");
+	popup.classList.add("loader");
+}
 
-
+function hidePopup() {
+	popup.classList.add("hidden");
+}
