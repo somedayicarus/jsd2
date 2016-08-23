@@ -23,13 +23,10 @@ messageBoard.addEventListener("click", downVote);
 messageBoard.addEventListener("click", deletePost);
 
 
-
-
 // Event Handlers
 // ------------------------------------------------
 function addMessage(event) {
     event.preventDefault();
-	console.log(event);
 
     // create JSON for new item
     var message = {
@@ -38,13 +35,11 @@ function addMessage(event) {
     	voteCount: 0
     };
 
-
     app.messages.push(message);
     createPost(app);
     saveApp();
 
     post.value = "";
-
 };
 
 
@@ -76,7 +71,7 @@ function deletePost(event) {
 	if(event.target.className != "fa fa-trash pull-right delete") {
 		return
 	}
-    console.log(event.target);
+
 	var listID = event.target.closest("li").dataset.id;
 	app.messages.forEach(function(item, index) {
 		//delete matched message
@@ -104,7 +99,7 @@ function downVote(event) {
 	}
 
 	saveApp();
-}
+};
 
 // Update page functions
 // ------------------------------------------------
@@ -128,15 +123,11 @@ function dataChanged(snapshot) {
     messageBoard.innerHTML = "";
     app = snapshot.val();
     createPost(app);
-    
 };
 
 function getApp() {
     firebaseRef.on("value", dataChanged);
 };
-
-
-
 
 
 //helper functions
