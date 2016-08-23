@@ -27,7 +27,7 @@
 #popUp.loader {
   background-image: url(../images/ajax_loader.gif);
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position:  center center;
 }
 
 #popUp.loader .container {
@@ -196,6 +196,7 @@ nav ul ul li {
 }
 
 .article:hover {
+  cursor:pointer;
   padding: 0 2%;
   background-color: #eee;
 }
@@ -231,7 +232,7 @@ nav ul ul li {
   color: #666;
 }
 
-.article .impressions {
+.article .published {
   width: 15%;
   float: right;
   font-size: 30px;

@@ -1,28 +1,28 @@
 // Structure
 // ------------------------------------------------
+var home = document.querySelector("#home");
 var sourceTemplate = document.querySelector("#source-template");
 var articleTemplate = document.querySelector("#article-template");
 var popup = document.querySelector("#popUp");
-var container = document.querySelector(".container");
 var closePopUp = document.querySelector(".closePopUp");
 var ul = document.querySelector("#menu");
 var main = document.querySelector("#main");
 var span = document.querySelector("span");
+var search = document.querySelector("#search");
+var input = document.querySelector("input");
 
 // Setup
 // ------------------------------------------------
 var articles;
-var url = "https://newsapi.org/v1/articles?source=techcrunch&apiKey=ce2ae499737a4b28a9618e6b36fa2076";
-span.innerHTML = "TechCrunch";
 
 var sources = [
 	{
-		name: "TechCrunch",
-		path: "techcrunch"
-	},
-	{
 		name: "The Next Web",
 		path: "the-next-web"
+	},
+	{
+		name: "TechCrunch",
+		path: "techcrunch"
 	},
 	{
 		name: "BuzzFeed",
@@ -55,36 +55,49 @@ var sources = [
 // Event Listeners
 // ------------------------------------------------
 window.addEventListener("load", init);
+home.addEventListener("click", init);
 main.addEventListener("click", populatePopUp);
 closePopUp.addEventListener("click", hidePopup)
 ul.addEventListener("click", chooseSource);
+// input.addEventListener("input", filter);
+
+search.addEventListener("click", function(e) {
+	e.preventDefault();
+	search.classList.add("active");
+});
+
+input.addEventListener("blur", function(e) {
+	search.classList.remove("active");
+})
 
 
 // Event Handlers
 // ------------------------------------------------
 function init(e) {
 	timeoutID = window.setTimeout(hidePopup, 1000);
-
+	span.innerHTML = "The Next Web";
 	getJSON(e);
-	getSources(e);
-}
-
-function getSources(e) {
-	var template = Handlebars.compile(sourceTemplate.innerHTML);
-	ul.innerHTML = template(sources);
-}
+	displaySources(e);
+};
 
 function getJSON(e) {
-	var jqxhr = $.getJSON(url, displayArticles);
-}
+	var url = "https://newsapi.org/v1/articles?source=the-next-web&apiKey=ce2ae499737a4b28a9618e6b36fa2076";
+	$.getJSON(url, displayArticles);
+};
+
+function displaySources(e) {
+	var template = Handlebars.compile(sourceTemplate.innerHTML);
+	ul.innerHTML = template(sources);
+};
+
 
 
 function displayArticles(json) {
-	var template = Handlebars.compile(articleTemplate.innerHTML);
-	main.innerHTML = template(json.articles);
-	articles = json.articles;
-}
-
+		articles = json.articles;
+		var template = Handlebars.compile(articleTemplate.innerHTML);
+		main.innerHTML = template(articles);
+		
+};
 
 function populatePopUp(e) {
 	e.preventDefault();
@@ -102,7 +115,7 @@ function populatePopUp(e) {
 			p.textContent = item.description;
 			a.href = item.url;
 
-			showSummary();
+			popup.classList.remove("hidden", "loader");
 		}
 	});
 };
@@ -115,26 +128,47 @@ function chooseSource(e) {
 
 	sources.forEach(function(item) {
 		if(clicked === item.name) {
-			showLoader()
+			popup.classList.remove("hidden");
+			popup.classList.add("loader");
 			var url = "https://newsapi.org/v1/articles?source=" + item.path + "&apiKey=ce2ae499737a4b28a9618e6b36fa2076";
-			var jqxhr = $.getJSON(url, displayArticles);
+			$.getJSON(url, displayArticles);
 			
 			var timeoutID = setTimeout(hidePopup, 1000);
 		}
 	});
 };
 
-
-//show/hide/load timeout functions
-function showSummary() {
-	popup.classList.remove("hidden", "loader");
-}
-
-function showLoader() {
-	popup.classList.remove("hidden");
-	popup.classList.add("loader");
-}
-
 function hidePopup() {
 	popup.classList.add("hidden");
-}
+};
+
+
+// function filter(e) {
+// 	var searchTerms = input.value;
+
+// 	articles.forEach(function(item, index) {
+// 		if(item.title.includes(searchTerms) == false) {
+// 			console.log(item.title);
+// 			console.log(index);
+// 			articles.splice(index, 1);
+
+// 			console.log(articles);
+// 			// displayArticles(articles);
+// 		}
+// 		// console.log(includes);
+		
+// 	})
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
