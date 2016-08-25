@@ -103,25 +103,21 @@ function populatePopUp(e) {
 	e.preventDefault();
 
 	var clicked = e.target.closest("article");
-	
-	//create elements
+	var index = clicked.dataset.index;
+
+	//grab elements
 	var h1 = document.querySelector("#popUp .container h1");
 	var p = document.querySelector("#popUp .container p");
 	var a = document.querySelector("#popUp .container a");
 
 	//add content, etc
-	articles.forEach(function(item) {
+	h1.textContent = articles[index].title;
+	p.textContent = articles[index].description;
+	a.href = articles[index].url;
 
-		//loop over article array and find matched item
-		if(clicked.dataset.url == item.url) {
-			h1.textContent = item.title;
-			p.textContent = item.description;
-			a.href = item.url;
-
-			popup.classList.remove("hidden", "loader");
-		}
-	});
+	popup.classList.remove("hidden", "loader");
 };
+
 
 function chooseSource(e) {
 	e.preventDefault();

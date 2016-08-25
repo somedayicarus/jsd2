@@ -50,7 +50,7 @@
 
     <script type="text/x-handlebars-template" id="article-template">
       {{#each this}}
-        <article class="article" data-url="{{url}}">
+        <article class="article" data-index={{@index}}>
           <section class="featuredImage">
             <img src="{{urlToImage}}" alt="{{title}}" />
           </section>
@@ -67,7 +67,7 @@
 
     <script type="text/x-handlebars-tempalte" id="search-results">
         {{#each this}}
-          <article class="article" data-url="{{url}}">
+          <article class="article" data-index={{@index}}>
             <section class="featuredImage">
               <img src="{{urlToImage}}" alt="{{title}}" />
             </section>
