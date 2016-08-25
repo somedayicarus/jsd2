@@ -7,7 +7,7 @@ var ul = document.querySelector("#menu");
 var main = document.querySelector("#main");
 var span = document.querySelector("span");
 var search = document.querySelector("#search");
-var input = document.querySelector("input");
+var input = document.querySelector("#search input");
 
 
 // Handlebars Templates
@@ -94,9 +94,9 @@ function displaySources(e) {
 };
 
 function displayArticles(json) {
-		articles = json.articles;
-		var template = Handlebars.compile(articleTemplate.innerHTML);
-		main.innerHTML = template(articles);
+	articles = json.articles;
+	var template = Handlebars.compile(articleTemplate.innerHTML);
+	main.innerHTML = template(articles);
 };
 
 function populatePopUp(e) {
@@ -144,7 +144,9 @@ function hidePopup() {
 };
 
 function showSearch(e) {
+	e.preventDefault();
 	search.classList.add("active");
+	input.focus();
 };
 
 function hideSearch(e) {
