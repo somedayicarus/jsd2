@@ -66,13 +66,12 @@ main.addEventListener("click", populatePopUp);
 closePopUp.addEventListener("click", hidePopup)
 ul.addEventListener("click", chooseSource);
 input.addEventListener("input", filter);
-
 search.addEventListener("click", showSearch);
 input.addEventListener("keyup", hideSearch);
 
 input.addEventListener("blur", function(e) {
 	search.classList.remove("active");
-})
+});
 
 
 // Event Handlers
@@ -94,7 +93,6 @@ function displaySources(e) {
 	ul.innerHTML = template(sources);
 };
 
-
 function displayArticles(json) {
 		articles = json.articles;
 		var template = Handlebars.compile(articleTemplate.innerHTML);
@@ -103,6 +101,7 @@ function displayArticles(json) {
 
 function populatePopUp(e) {
 	e.preventDefault();
+
 	var clicked = e.target.closest("article");
 	
 	//create elements
@@ -112,6 +111,8 @@ function populatePopUp(e) {
 
 	//add content, etc
 	articles.forEach(function(item) {
+
+		//loop over article array and find matched item
 		if(clicked.dataset.url == item.url) {
 			h1.textContent = item.title;
 			p.textContent = item.description;
@@ -124,6 +125,7 @@ function populatePopUp(e) {
 
 function chooseSource(e) {
 	e.preventDefault();
+
 	var clicked = e.target.innerHTML;
 	span.innerHTML = clicked;
 
@@ -131,6 +133,7 @@ function chooseSource(e) {
 		if(clicked === item.name) {
 			popup.classList.remove("hidden");
 			popup.classList.add("loader");
+
 			var url = "https://newsapi.org/v1/articles?source=" + item.path + "&apiKey=ce2ae499737a4b28a9618e6b36fa2076";
 			$.getJSON(url, displayArticles);
 			
@@ -146,14 +149,14 @@ function hidePopup() {
 
 function showSearch(e) {
 	search.classList.add("active");
-}
+};
 
 function hideSearch(e) {
 	e.preventDefault();
 	if(e.keyCode == 13) {
 		search.classList.remove("active");
 	}
-}
+};
 
 function filter(e) {
 	var searchTerms = input.value.toLowerCase();

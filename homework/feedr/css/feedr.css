@@ -5,6 +5,11 @@
   margin: 0 auto;
 }
 
+#main p {
+  font-size:18px;
+  padding:40px;
+}
+
 #popUp {
   opacity: 0.95;
   position: absolute;
