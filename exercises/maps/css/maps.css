@@ -1,0 +1,16 @@
+body {
+	background-color:pink;
+	font-family:Helvetica, Arial, sans-serif;
+	color:white;
+	width:100%;
+}
+
+.container {
+	width:75%;
+	margin:60px auto;
+}
+
+
+#map {
+	height: 400px;
+}

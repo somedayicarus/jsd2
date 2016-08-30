@@ -1,0 +1,19 @@
+ html, body {
+      margin: 30px;
+      height: 100%;
+      width: 100%;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .box {
+      height: 200px;
+      width: 200px;
+      margin: 2px;
+      text-align: center;
+      font-size: 2em;
+      line-height: 185px;
+      font-weight: bold;
+    }
