@@ -1,3 +1,15 @@
+/* typography */
+@import 'https://fonts.googleapis.com/css?family=Philosopher:400,400i|Source+Sans+Pro:300,400';
+
+h1, h2, h3, h4, h5, h6 {
+	font-family:"Philosopher", "Times New Roman", serif;
+}
+p {
+	font-family:"Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+
+
+
 /* layout */
 nav, section, .header {
 	width:70%;
@@ -7,29 +19,58 @@ nav, section, .header {
 
 .header {
 	margin-top:100px;
-	margin-bottom:20px;
-	padding:0;
+	margin-bottom:40px;
 }
 
 .search form {
 	width:100%;
+	border-bottom:1px solid gray;
+}
+.search input {
+	width:93%;
+	border:none;
+	height:50px;
+	padding:10px;
+}
+
+.search button {
+	background-color:#fff;
+	border:none;
 }
 
 ul {
 	padding:0;
 }
+
+/* header */
+header {
+	border-bottom:5px solid #eee;
+}
+
+.logo {
+	font-family:"Philosopher";
+	font-size:36px;
+}
+.logo a {
+	color:#fff;
+	text-decoration: none;
+	padding:10px 22px;
+	background-color: black;
+}
+
+
 /* filter bar */
 .filters {
-	margin-top:80px;
+	margin:40px auto;
 	text-align:center;
 }
-.filters ul {
-	margin:0 5%;
-}
+
 .filters ul li {
 	display:inline-block;
-	width:100px;
+	width:80px;
 }
+
+
 
 
 .hide {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Wishlist</title>
+	<title>Tinsel</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,12 +11,12 @@
 </head>
 <body>
 	<header>
-		<div class="header">
+		<div class="header container-fluid">
 			<div class="row">
-				<div class="col-xs-2">
-					<img src="#" alt="wishlist logo">
+				<div class="col-xs-1 logo">
+					<a href="#">T</a>
 				</div>
-				<div class="col-xs-9 search">
+				<div class="col-xs-10 search">
 					<form>
 						<input id="search" type="text" placeholder="Search for a product...">
 						<button type="submit" id="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -33,22 +33,23 @@
 	<nav class="filters container-fluid">
 		<h1 class="center-block">Category or Search Term</h1>
 
-			<ul class="clearfix">
+			<ul>
+				<li>Filters:</li>
 				
-					<li class="dropdown pull-left"><a href="#" data-toggle="dropdown">Brand</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Adidas</a></li>
-							<li><a href="#">Abercrombie &amp; Fitch</a></li>
-							<li><a href="#">Yeezy</a></li>
-							<li><a href="#">Diptyque</a></li>
-							<li><a href="#">Nike</a></li>
-							<li><a href="#">Puma</a></li>
-						</ul>
-					</li>
+				<li class="dropdown"><a href="#" data-toggle="dropdown">Brand</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Adidas</a></li>
+						<li><a href="#">Abercrombie &amp; Fitch</a></li>
+						<li><a href="#">Yeezy</a></li>
+						<li><a href="#">Diptyque</a></li>
+						<li><a href="#">Nike</a></li>
+						<li><a href="#">Puma</a></li>
+					</ul>
+				</li>
+			
 				
 				
-				
-					<li class="dropdown pull-left"><a href="#" data-toggle="dropdown">Price</a>
+					<li class="dropdown"><a href="#" data-toggle="dropdown">Price</a>
 						<ul class="dropdown-menu">
 							<li><input type="radio">Under $50</li>
 							<li><input type="radio">Under $100</li>
@@ -58,7 +59,7 @@
 				
 
 				
-					<li class="dropdown pull-right"><a href="#" data-toggle="dropdown">Color</a>
+					<li class="dropdown"><a href="#" data-toggle="dropdown">Color</a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Black</a></li>
 							<li><a href="#">Red</a></li>
@@ -72,7 +73,7 @@
 				
 
 				
-					<li class="dropdown pull-right"><a href="#" data-toggle="dropdown">Size</a>
+					<li class="dropdown"><a href="#" data-toggle="dropdown">Size</a>
 						<ul class="dropdown-menu">
 							<li><a href="#">XS</a></li>
 							<li><a href="#">S</a></li>
