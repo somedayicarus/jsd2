@@ -1,5 +1,37 @@
-nav, section {
+/* layout */
+nav, section, .header {
 	width:70%;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+.header {
+	margin-top:100px;
+	margin-bottom:20px;
+	padding:0;
+}
+
+.search form {
+	width:100%;
+}
+
+ul {
+	padding:0;
+}
+/* filter bar */
+.filters {
+	margin-top:80px;
+	text-align:center;
+}
+.filters ul {
+	margin:0 5%;
+}
+.filters ul li {
+	display:inline-block;
+	width:100px;
+}
+
+
+.hide {
+	display:none;
 }
