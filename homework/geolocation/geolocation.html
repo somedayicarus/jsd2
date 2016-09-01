@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geolocation</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/geolocation.css">
+</head>
+<body>
+
+<main>
+	<header>
+		<h1>Geolocation</h1>
+	</header>
+
+	<section>
+		<button>
+			<span>Get Current Position</span>
+			<i>➤</i>
+		</button>
+		<p class="error"></p>
+		<div class="map"></div>
+		<ul class="locations"></ul>
+	</section>
+</main>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtRjyd7dTkmjJbr1B43vdMpgHOl8yzrUA&callback=initMap&libraries=places"
+async defer></script>
+<script src="js/geolocation.js"></script>
+</body>
+</html>
