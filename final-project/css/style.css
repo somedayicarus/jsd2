@@ -4,10 +4,9 @@
 h1, h2, h3, h4, h5, h6 {
 	font-family:"Philosopher", "Times New Roman", serif;
 }
-p {
+p, ul, ol, li, a, input {
 	font-family:"Source Sans Pro", Helvetica, Arial, sans-serif;
 }
-
 
 
 /* layout */
@@ -17,27 +16,6 @@ nav, section, .header {
 	margin-right:auto;
 }
 
-.header {
-	margin-top:100px;
-	margin-bottom:40px;
-}
-
-.search form {
-	width:100%;
-	border-bottom:1px solid gray;
-}
-.search input {
-	width:93%;
-	border:none;
-	height:50px;
-	padding:10px;
-}
-
-.search button {
-	background-color:#fff;
-	border:none;
-}
-
 ul {
 	padding:0;
 }
@@ -45,18 +23,65 @@ ul {
 /* header */
 header {
 	border-bottom:5px solid #eee;
+	background-color:#eee;
 }
 
-.logo {
+.header {
+	padding-top:100px;
+	padding-bottom:40px;
+	background-color:#eee;
+}
+
+
+.logo a {
 	font-family:"Philosopher";
 	font-size:36px;
-}
-.logo a {
 	color:#fff;
 	text-decoration: none;
 	padding:10px 22px;
 	background-color: black;
 }
+
+.heart {
+	text-align:center;
+}
+
+.heart a {
+	font-size:24px;
+	color:palevioletred;
+	display:inline-block;
+	padding:8px;
+	height:50px;
+}
+
+.search form {
+	width:100%;
+	border-bottom:1px solid gray;
+	background-color:#fff;
+}
+.search input {
+	width:95%;
+	border:none;
+	height:50px;
+	padding:10px;
+}
+
+.search input:focus {
+	outline:none;
+}
+
+.search button {
+	background-color:#fff;
+	border:none;
+}
+
+.focus {
+	height:48px;
+	box-shadow: 0 0 5px rgba(255, 86, 215, 1);
+	border: 1px solid rgba(255, 86, 215, 1);
+}
+
+
 
 
 /* filter bar */
@@ -70,9 +95,42 @@ header {
 	width:80px;
 }
 
-
-
-
-.hide {
-	display:none;
+/* thumbnails */ 
+figure .glyphicon {
+	position:absolute;
+	top:4px;
 }
+
+figure {
+	cursor:pointer;
+	position:relative;
+	overflow:hidden;
+}
+figure figcaption {
+	background-color: #fff;
+	position:absolute;
+	left:0;
+	width:100%;
+	-webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    height:3.75em;
+    bottom:-3.75em;
+    font-size:13px;
+    padding:.5em;
+}
+
+figure:hover figcaption {
+	-moz-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+.details p {
+	margin:0;
+}
+
+

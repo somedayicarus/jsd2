@@ -55,6 +55,8 @@ function printLocation(latitude, longitude) {
 function initMap() {
 	console.log("map!");
 	map = new google.maps.Map(mapDiv, mapOptions);
+
+	
 }
 
 

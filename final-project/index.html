@@ -17,12 +17,12 @@
 					<a href="#">T</a>
 				</div>
 				<div class="col-xs-10 search">
-					<form>
+					<form id="form">
 						<input id="search" type="text" placeholder="Search for a product...">
 						<button type="submit" id="submit"><span class="glyphicon glyphicon-search"></span></button>
 					</form>
 				</div>
-				<div class="col-xs-1">
+				<div class="col-xs-1 heart">
 					<a href="#"><span class="glyphicon glyphicon-heart"></span></a>
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 
 	</nav>
 
-<div class="hide">
+<div class="hidden">
 	<!-- browse by category nav -->
 	<nav>
 		<h1>Browse by Category</h1>
@@ -133,132 +133,42 @@
 	<!-- end browse navigation --> 
 </div>
 
-	<!-- search result module -->
-	<section>
-		<div class="container-fluid">
+	<!-- test template module -->
 
-			<div class="row"><!-- START RESULT ROW 1 -->
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
+<section id="results"></section>
 
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
+<script type="text/x-handlebars-template" id="results-template">
+	<div class="container-fluid">
+	{{#grouped_each 4 products}}
+		<div class="row"><!-- START RESULT ROW 1 -->
 
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
+		{{#each this}}
+			<div class="col-xs-6 col-md-3">
+				<figure class="thumbnail">
+					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+					<a href="{{clickUrl}}">
+						<img src="{{image.sizes.Large.url}}">
+					</a>
 
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
+					<figcaption class="details">
+						<p>{{name}} | ${{price}}</p>
+					</figcaption>
+				</figure>
+			</div>
+		{{/each}}
 
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
+		</div><!-- END RESULT ROW 2 -->
+	{{/grouped_each}}
+	</div>
+</script>
 
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
+	<!-- end test template -->
 
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
 
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-			</div><!-- END RESULT ROW 1 -->
 
-			<div class="row"><!-- START RESULT ROW 2 -->
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
-
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
-
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
-
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-md-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
-
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-			</div><!-- END RESULT ROW 2 -->
-
-		</div>
-	</section>	
-	<!-- end search results -->
 
 	<!-- list detail module -->
-	<section class="hide">
+	<section class="hidden">
 		<h1>List Name</h1>
 		<p>List Description</p>
 		<a href="#"><span class="glyphicon glyphicon-plus"></span></a>
@@ -342,6 +252,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<script src="js/mockdata.js"></script>
 	<script src="js/app.js"></script>
 	</body>
 </html>
