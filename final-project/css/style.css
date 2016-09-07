@@ -3,9 +3,11 @@
 
 h1, h2, h3, h4, h5, h6 {
 	font-family:"Philosopher", "Times New Roman", serif;
+	color:#3a3a3a;
 }
 p, ul, ol, li, a, input {
 	font-family:"Source Sans Pro", Helvetica, Arial, sans-serif;
+	color:#3a3a3a;
 }
 
 
@@ -75,11 +77,6 @@ header {
 	border:none;
 }
 
-.focus {
-	height:48px;
-	box-shadow: 0 0 5px rgba(255, 86, 215, 1);
-	border: 1px solid rgba(255, 86, 215, 1);
-}
 
 
 
@@ -94,15 +91,28 @@ header {
 	display:inline-block;
 	width:80px;
 }
+.dropdown a {
+	text-decoration: none
+}
+.dropdown .glyphicon {
+	font-size:10px;
+	color:#4c4c4c;
+	top:0;
+}
 
 /* thumbnails */ 
 figure .glyphicon {
 	position:absolute;
 	top:4px;
+	color:#ccc;
+	cursor:pointer;
+	font-size:18px;
+}
+figure .glyphicon:hover {
+	color:palevioletred;
 }
 
 figure {
-	cursor:pointer;
 	position:relative;
 	overflow:hidden;
 }
