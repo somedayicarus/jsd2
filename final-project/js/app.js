@@ -1,20 +1,31 @@
 //setup 
 //.....................
 
+
 //shopstyle API endpoint
-var method = "products" ;
+var method = "products";
 var pid = "uid3904-35452852-63";
 var url = "http://api.shopstyle.com/api/v2/"+ method + "?pid=" + pid + "&limit=50";
 
 
 //grab handlebars template
 var resultsTemplate = document.querySelector("#results-template");
+var savedTemplate = document.querySelector("#saved-template");
 
-//establish connection with firebase
-var firebaseRef = new Firebase("https://tinsel-4db11.firebaseio.com/");
+// Initialize Firebase
+var config = {
+apiKey: "AIzaSyC0OdzgE2grH1ZTXHB4Z9dWdAsUL8M9rbc",
+authDomain: "tinsel-4db11.firebaseapp.com",
+databaseURL: "https://tinsel-4db11.firebaseio.com",
+storageBucket: "tinsel-4db11.appspot.com",
+};
+
+firebase.initializeApp(config);
+
 
 //saved lists object
 var results;
+
 var data = {
 	"wishes": []
 };
@@ -26,6 +37,8 @@ var data = {
 var container = document.querySelector("#list-container");
 var form = document.querySelector("form");
 var input = document.querySelector("#search");
+var h1 = document.querySelector(".filters h1");
+var filters = document.querySelector(".filters ul");
 
 
 
@@ -33,7 +46,7 @@ var input = document.querySelector("#search");
 //.....................
 
 //on load, dispaly saved items
-	// window.addEventListener("load", init)	
+window.addEventListener("load", init)	
 
 //on list click, show list contents
 container.addEventListener("click", addWish);
@@ -47,43 +60,54 @@ form.addEventListener("submit", runSearch);
 //event handlers 
 //.....................
 
-//init  
-// function init(e) {
-// 	getData();
-// }
 
+function init(e) {
+	firebase.database().ref().once('value').then(getData);
+}
+
+//run ajax request with input field value as search parameters
 function runSearch(e) {
+	h1.textContent = "Search results for: '" + input.value + "'";
+	//format search term 
 	var searchText = "&fts=" + input.value.split(' ').join('+');
 	$.getJSON(url + searchText, displayResults);
-
+	filters.classList.remove("hidden");
 	input.value = "";
 }
 
 function addWish(e) {
 	e.preventDefault();
 
+	if(e.target.tagName != "SPAN") {
+		return;
+	};
+
 	console.log("addWish")
 	console.log(e);
 	console.log(e.target.closest("figure"))
 
-	var product = e.target.closest("figure");
-	var index = product.dataset.index;
+	var clicked = e.target.closest("figure");
+	var index = clicked.dataset.index;
+	var product = results[index];
 
 	//create JSON for new saved item
 	var wish = {
-		id: product.dataset.id,
-		name: "Christmas 2016",
-		price: 123,
-		image: "image_url",
-		url: "retailer_url",
+		id: product.id,
+		name: product.name,
+		price: product.price,
+		image: product.image.sizes.Large.url,
+		url: product.clickUrl,
 		fulfilled: false
 	}
 
-	// //add wish item to wishes array
-	// data.wishes.push(wish);
+	console.log(wish);
+	//add wish item to wishes array
+	data.wishes.push(wish);
 
-	// //save updated list data to firebase
-	// saveData(data);
+	console.log(data);
+	//save updated list data to firebase
+	saveData(data);
+
 }
 
 
@@ -93,21 +117,22 @@ function addWish(e) {
 //firebase functions 
 //..................... 
 function saveData() {
-	firebaseRef.set(data);
+	firebase.database().ref().set(data);
 };	
 
-function dataChanged(snapshot) {
+function getData(snapshot) {
+
 	if(snapshot.val() === null) {
 		return;
 	}
-	container.innerHTML = "";
+	// container.innerHTML = "";
 	data = snapshot.val();
-	displayThumbnails(data);
+	console.log(data)
+	displaySaved(data);
+
 };
 
-function getData() {
-	firebaseRef.on("value", dataChanged);
-};
+
 
 //update page 
 //..................... 
@@ -117,27 +142,20 @@ function getData() {
 function displayResults(json) {
 	results = json.products;
 	var template = Handlebars.compile(resultsTemplate.innerHTML);
-	container.innerHTML = template(json);
+	container.innerHTML = template(results);
+}
+
+//compile
+function displaySaved(json) {
+	h1.textContent = "Your Saved Wishes";
+	var template = Handlebars.compile(savedTemplate.innerHTML);
+	container.innerHTML = template(json.wishes);
+	console.log(json);
 }
 
 
-//handlebars helper
-Handlebars.registerHelper('grouped_each', function(every, context, options) {
-    var out = "", subcontext = [], i;
-    if (context && context.length > 0) {
-        for (i = 0; i < context.length; i++) {
-            if (i > 0 && i % every === 0) {
-                out += options.fn(subcontext);
-                subcontext = [];
-            }
-            subcontext.push(context[i]);
-        }
-        out += options.fn(subcontext);
-    }
-    return out;
-});
 
-displayResults(mockdata);
+
 
 
 
