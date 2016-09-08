@@ -100,7 +100,7 @@ header {
 	top:0;
 }
 
-/* thumbnails */ 
+/* results */ 
 figure .glyphicon {
 	position:absolute;
 	top:4px;
@@ -115,7 +115,9 @@ figure .glyphicon:hover {
 figure {
 	position:relative;
 	overflow:hidden;
+	min-height: 215px;
 }
+
 figure figcaption {
 	background-color: #fff;
 	position:absolute;
@@ -141,6 +143,11 @@ figure:hover figcaption {
 
 .details p {
 	margin:0;
+}
+
+/* saved wishes */
+.saved .glyphicon-ok {
+	right:4px;
 }
 
 

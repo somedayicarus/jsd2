@@ -147,7 +147,7 @@ function displayResults(json) {
 
 //compile
 function displaySaved(json) {
-	h1.textContent = "Your Saved Wishes";
+	h1.textContent = "Saved Wishes";
 	var template = Handlebars.compile(savedTemplate.innerHTML);
 	container.innerHTML = template(json.wishes);
 	console.log(json);
