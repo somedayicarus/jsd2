@@ -12,18 +12,18 @@
 <body>
 	<header>
 		<div class="header container-fluid">
-			<div class="row">
-				<div class="col-xs-1 logo">
-					<a href="#">T</a>
+			<div class="flex-grid">
+				<div class="col logo">
+					<p>T</p>
 				</div>
-				<div class="col-xs-10 search">
+				<div class="col search">
 					<form id="form">
 						<input id="search" type="text" placeholder="Search for a product...">
 						<button type="submit" id="submit"><span class="glyphicon glyphicon-search"></span></button>
 					</form>
 				</div>
-				<div class="col-xs-1 heart">
-					<a href="#"><span class="glyphicon glyphicon-heart"></span></a>
+				<div class="col heart">
+					<span class="glyphicon glyphicon-heart"></span>
 				</div>
 			</div>
 		</div>
@@ -32,19 +32,18 @@
 	<!-- filter dropdowns -->
 	<nav class="filters container-fluid">
 		<h1 class="center-block headline"></h1>
-
 			<ul class="hidden">
 				<li>Filters:</li>
 				
 				<li class="dropdown"><a href="#" data-toggle="dropdown">Brand <span class="glyphicon glyphicon-plus"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Adidas</a></li>
-						<li><a href="#">Abercrombie &amp; Fitch</a></li>
-						<li><a href="#">Yeezy</a></li>
-						<li><a href="#">Diptyque</a></li>
-						<li><a href="#">Nike</a></li>
-						<li><a href="#">Puma</a></li>
+					<ul id="brands" class="dropdown-menu">
+						<script type="text/x-handlebars-template" id="brand-template">
+							{{#each this}}
+							<li><a href="#">{{name}}</a></li>
+							{{/each}}
+						</script>
 					</ul>
+						
 				</li>
 			
 				
@@ -70,38 +69,18 @@
 							<li><a href="#">Purple</a></li>
 						</ul>
 					</li>
-				
-
-				
-					<li class="dropdown"><a href="#" data-toggle="dropdown">Size <span class="glyphicon glyphicon-plus"></span></a>
-						<script type="text/x-handlebars-template" id="filter-list">
-							<ul class="dropdown-menu">
-								<li><a href="#">XS</a></li>
-								<li><a href="#">S</a></li>
-								<li><a href="#">M</a></li>
-								<li><a href="#">L</a></li>
-								<li><a href="#">0</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">6</a></li>
-								<li><a href="#">8</a></li>
-								<li><a href="#">10</a></li>
-								<li><a href="#">12</a></li>
-							</ul>
-						</script>
-					</li>
-				
 			</ul>
 
 
 	</nav>
 
-<div class="hidden">
+<div class="browse hidden">
 	<!-- browse by category nav -->
 	<nav>
-		<h1>Browse by Category</h1>
-		<ul>
-			<li><a href="#">Women</a>
+		<h2>Search for products or browse by category</h2>
+		
+		<ul class="flex-grid">
+			<li class="col"><a href="#">Women</a>
 				<ul><!-- womens  -->
 					<li><a href="#">Accessories</a></li>
 					<li><a href="#">Dresses</a></li>
@@ -114,7 +93,7 @@
 			<!-- end women -->
 
 			<!-- mens -->
-			<li><a href="#">Men</a>
+			<li class="col"><a href="#">Men</a>
 				<ul>
 					<li><a href="#">Accessories</a></li>
 					<li><a href="#">Jeans</a></li>
@@ -125,11 +104,18 @@
 				</ul>
 			</li>
 			<!-- end mens -->
-
-			<li><a href="#">Jewelry</a></li>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Beauty</a></li>
-			<li><a href="#">Sale</a></li>
+			<li class="col">
+				<ul>
+					<li><a href="#">Jewelry</a></li>
+					<li><a href="#">Home</a></li>
+				</ul>
+			</li>
+			<li class="col">
+				<ul>
+					<li class="col"><a href="#">Beauty</a></li>
+					<li class="col"><a href="#">Sale</a></li>
+				</ul>
+			</li>
 		</ul>
 	</nav>
 	<!-- end browse navigation --> 
@@ -137,15 +123,15 @@
 
 	<!-- result template module -->
 
-<section id="list-container"></section>
+<section id="main-container" class="container-fluid"></section>
 
 <script type="text/x-handlebars-template" id="results-template">
-	<div class="container-fluid">
+	<div class="results-container">
 
-		<div class="row"><!-- START RESULT ROW 1 -->
+		<div class="flex-grid"><!-- START RESULT ROW 1 -->
 
 		{{#each this}}
-			<div class="col-xs-6 col-md-3">
+			<div class="col">
 				<figure data-index={{@index}} class="thumbnail">
 					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 					<a href="{{clickUrl}}">
@@ -168,10 +154,11 @@
 
 <!-- list template -->
 <script type="text/x-handlebars-template" id="saved-template">
-		<div class="row"><!-- START RESULT ROW 1 -->
+	<div class="saved-container">	
+		<div class="flex-grid"><!-- START RESULT ROW 1 -->
 
 		{{#each this}}
-			<div class="col-xs-6 col-md-3 saved">
+			<div class="col saved">
 				<figure data-index={{@index}} class="thumbnail">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

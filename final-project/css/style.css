@@ -18,6 +18,17 @@ nav, section, .header {
 	margin-right:auto;
 }
 
+.flex-grid {
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: center;
+}
+
+.col {
+	flex: 1;
+}
+
+
 ul {
 	padding:0;
 }
@@ -35,37 +46,41 @@ header {
 }
 
 
-.logo a {
+.logo p {
 	font-family:"Philosopher";
 	font-size:36px;
 	color:#fff;
 	text-decoration: none;
-	padding:10px 22px;
 	background-color: black;
+	text-align:center;
+	padding:5px;
+	height:56px;
+	width:56px;
+	cursor: pointer;
 }
 
 .heart {
 	text-align:center;
 }
 
-.heart a {
-	font-size:24px;
+.heart span {
+	font-size:28px;
 	color:palevioletred;
 	display:inline-block;
-	padding:8px;
-	height:50px;
+	padding:10px 8px 0;
+	cursor:pointer;
 }
 
 .search form {
 	width:100%;
 	border-bottom:1px solid gray;
 	background-color:#fff;
+	padding:10px;
 }
 .search input {
 	width:95%;
 	border:none;
-	height:50px;
-	padding:10px;
+	height:34px;
 }
 
 .search input:focus {
@@ -75,6 +90,13 @@ header {
 .search button {
 	background-color:#fff;
 	border:none;
+	float:right;
+	height:34px;
+	padding:0;
+}
+
+.col.search {
+	flex:8;
 }
 
 
@@ -99,6 +121,10 @@ header {
 	color:#4c4c4c;
 	top:0;
 }
+.dropdown-menu {
+	height:215px;
+	overflow:scroll;
+}
 
 /* results */ 
 figure .glyphicon {
@@ -115,7 +141,10 @@ figure .glyphicon:hover {
 figure {
 	position:relative;
 	overflow:hidden;
+	width:20%;
 	min-height: 215px;
+	min-width:215px;
+	margin: 0 auto;
 }
 
 figure figcaption {
@@ -149,5 +178,26 @@ figure:hover figcaption {
 .saved .glyphicon-ok {
 	right:4px;
 }
+
+.saved .glyphicon-ok:hover {
+	color:green;
+}
+
+.saved .glyphicon-remove:hover {
+	color:red;
+}
+
+/* browse */
+h2 { 
+text-align: center;
+}
+
+
+
+
+
+
+
+
 
 
