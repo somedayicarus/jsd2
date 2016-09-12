@@ -4,12 +4,34 @@
 h1, h2, h3, h4, h5, h6 {
 	font-family:"Philosopher", "Times New Roman", serif;
 	color:#3a3a3a;
+	text-align:center;
+	margin:40px;
 }
 p, ul, ol, li, a, input {
 	font-family:"Source Sans Pro", Helvetica, Arial, sans-serif;
 	color:#3a3a3a;
 }
 
+/* loader */ 
+.loader {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index: 1;
+	width:100%;
+	height:100%;
+	background-color:rgba(255, 255, 255, .7);
+	text-align:center;
+}
+
+.loader img {
+	position:fixed;
+	top:50%;
+	left:50%;
+	width:100px;
+	margin-top:-50px;
+	margin-left:-50px;
+}
 
 /* layout */
 nav, section, .header {
@@ -32,6 +54,20 @@ nav, section, .header {
 ul {
 	padding:0;
 }
+
+/* browse */
+.browse a {
+	text-decoration: none;
+	padding:8px;
+	cursor: pointer;
+}
+.browse ul li {
+	list-style: none;
+}
+.womens, .mens {
+	margin-left:10px;
+}
+
 
 /* header */
 header {
@@ -100,32 +136,6 @@ header {
 }
 
 
-
-
-
-/* filter bar */
-.filters {
-	margin:40px auto;
-	text-align:center;
-}
-
-.filters ul li {
-	display:inline-block;
-	width:80px;
-}
-.dropdown a {
-	text-decoration: none
-}
-.dropdown .glyphicon {
-	font-size:10px;
-	color:#4c4c4c;
-	top:0;
-}
-.dropdown-menu {
-	height:215px;
-	overflow:scroll;
-}
-
 /* results */ 
 figure .glyphicon {
 	position:absolute;
@@ -157,8 +167,8 @@ figure figcaption {
     -o-transition: all 300ms ease-out;
     -ms-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
-    height:3.75em;
-    bottom:-3.75em;
+    height:35%;
+    bottom:-35%;
     font-size:13px;
     padding:.5em;
 }
@@ -175,9 +185,13 @@ figure:hover figcaption {
 }
 
 /* saved wishes */
+.saved-container {
+	min-height:500px;
+}
 .saved .glyphicon-ok {
 	right:4px;
 }
+
 
 .saved .glyphicon-ok:hover {
 	color:green;
@@ -187,13 +201,48 @@ figure:hover figcaption {
 	color:red;
 }
 
-/* browse */
-h2 { 
-text-align: center;
+.liked {
+	color:palevioletred !important;
 }
 
+/* fulfilled */
+section#fulfilled-container {
+	width:100%;
+	background-color:lavenderblush;
+}
+.fulfilled-container {
+	width:50%;
+	margin:40px auto 0;
+	padding:10px 0 80px;
+	max-width: 650px;
+	min-width:450px;
 
+}
+.fulfilled-container h3 {
+ 	text-align:left;;
+ 	margin:40px auto;
+ 	padding:30px 30px 30px 0;
+ 	border-bottom:1px solid grey;
+}
 
+.fulfilled-container li:nth-child(1) {
+	display:none;
+}
+
+.fulfilled-container ul {
+	list-style:none;
+	margin-bottom:0;
+}
+.fulfilled-container ul li span{
+	float:right;
+	padding:0 5px;
+	cursor:pointer;
+}
+
+.thanked {
+	text-decoration: line-through;
+	color:grey;
+}
 
 
 

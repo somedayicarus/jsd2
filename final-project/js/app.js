@@ -5,13 +5,12 @@
 //shopstyle API endpoint
 var pid = "uid3904-35452852-63";
 var url = "http://api.shopstyle.com/api/v2/products?pid=" + pid + "&limit=50";
-var brandURL = "http://api.shopstyle.com/api/v2/brands?pid=" + pid;
-var colorURL =  "http://api.shopstyle.com/api/v2/colors?pid=" + pid;
+var catURL = "http://api.shopstyle.com/api/v2/categories?pid=uid3904-35452852-63&&&cat=women&depth=2";
 
 //handlebar templates
 var resultsTemplate = document.querySelector("#results-template");
 var savedTemplate = document.querySelector("#saved-template");
-var brandTemplate = document.querySelector("#brand-template");
+var fulfilledTemplate = document.querySelector("#fulfilled-template");
 
 
 // Initialize Firebase
@@ -23,35 +22,29 @@ storageBucket: "tinsel-4db11.appspot.com",
 };
 
 firebase.initializeApp(config);
-
 var firebaseRef = firebase.database().ref();
-
 
 //data prep
 var results;
 
 var data = {
 	"wishes": [],
-	"fulfilled": [false]
+	"fulfilled": [0]
 };
 
-var brands = [];
-var colors = [];
 
-
-
-
-//structure
+//DOM Elements
 //.....................
 var main = document.querySelector("#main-container");
 var form = document.querySelector("form");
 var input = document.querySelector("#search");
-var h1 = document.querySelector(".filters h1");
-var filters = document.querySelector(".filters ul");
 var logo = document.querySelector(".logo");
-var brandList = document.querySelector("#brands");
-var browse = document.querySelector(".browse");
 var heart = document.querySelector(".heart");
+var fulfilledContainer = document.querySelector("#fulfilled-container");
+var browse = document.querySelector(".browse");
+var h1 = document.querySelector(".headline");
+var loader = document.querySelector(".loader");
+
 
 //event listeners 
 //.....................
@@ -59,24 +52,24 @@ var heart = document.querySelector(".heart");
 //on load, dispaly saved items
 window.addEventListener("load", init)	
 
-//when checklist icon clicked, mark fulfilled and 
-
 //on search submit, show results
 form.addEventListener("submit", runSearch);
 
 //on filter, update results
 
 //on logo click, load saved lists
-logo.addEventListener("click", init);
+logo.addEventListener("click", showBrowse);
 
 //on heart click, show saved items
 heart.addEventListener("click", init)
 
+//when category clicked - query api and display results
+browse.addEventListener("click", browseByCategory);
+
 
 //event handlers 
 //.....................
-$.getJSON(brandURL, saveBrands);
-$.getJSON(colorURL, saveColors);
+
 
 function init(e) {
 	firebaseRef.once('value').then(getData);
@@ -85,13 +78,36 @@ function init(e) {
 //run ajax request with input field value as search parameters
 function runSearch(e) {
 	e.preventDefault();
+	showLoader();
 	browse.classList.add("hidden");
 	h1.textContent = "Search results for: '" + input.value + "'";
 	//format search term 
 	var searchText = "&fts=" + input.value.split(' ').join('+');
-	$.getJSON(url + searchText, displayResults);
-	filters.classList.remove("hidden");
+	$.getJSON(url + searchText, function() {
+		var timeoutID = setTimeout(hideLoader, 10000)
+	})
+		.done(displayResults)
+		.fail(hideLoader);
+
 	input.value = "";
+}
+
+function browseByCategory(e) {
+	e.preventDefault();
+	if(e.target.tagName != "A") {
+		return;
+	} else {
+		showLoader();
+		browse.classList.add("hidden");
+		h1.textContent = e.target.textContent;
+		var cat = "&cat=" + e.target.dataset.cat;
+
+		$.getJSON(url + cat, function() {
+			var timeoutID = setTimeout(hideLoader, 1000)
+		})
+			.done(displayResults);
+	}
+	
 }
 
 function addWish(e) {
@@ -118,6 +134,10 @@ function addWish(e) {
 	//add wish item to wishes array
 	data.wishes.push(wish);
 
+	//add liked class to icon 
+	e.target.classList.add("liked")
+	console.log(e.target.classList);
+
 	//save updated list data to firebase
 	saveData(data);
 }
@@ -134,20 +154,25 @@ function markFulfilled(e) {
 
 		product.fulfilled = true;
 		console.log(data);
-		var fulfilled = {
+		var granted = {
 			id: product.id,
 			name: product.name,
 			price: product.price,
 			image: product.image,
 			url: product.url,
-			fulfilled: true
+			fulfilled: true,
+			thanked: false
 		}
-		data.fulfilled.push(fulfilled);
+		
+		data.fulfilled.push(granted);
 		data.wishes.splice(index, 1)
+
+		saveData();
+	displaySaved(data);
+	displayFulfilled(data);
 	}
 	
-	saveData();
-	displaySaved(data);
+	
 }
 
 function deleteSavedItem(e) {
@@ -164,6 +189,38 @@ function deleteSavedItem(e) {
 	displaySaved(data);
 }
 
+function deleteFulfilled(e) {
+	e.preventDefault();
+	console.log(e);
+	if(e.target.tagName != "SPAN") {
+		return;
+	} else if(e.target.classList.contains("glyphicon-trash")) {
+		var clicked = e.target.closest("li");
+		var index = clicked.dataset.index;
+
+		data.fulfilled.splice(index, 1)
+
+		saveData();
+		displayFulfilled(data);
+	}
+	
+}
+
+function markThanked(e) {
+	e.preventDefault();
+	if(e.target.tagName != "SPAN") {
+		return;
+	} else if(e.target.classList.contains("glyphicon-envelope")) {
+		var clicked = e.target.closest("li");
+		var index = clicked.dataset.index;
+
+		data.fulfilled[index].thanked = true;
+		clicked.classList.toggle("thanked");
+		console.log(clicked);
+
+		saveData();
+	}
+}
 
 //firebase functions 
 //..................... 
@@ -174,76 +231,100 @@ function saveData() {
 
 
 function getData(snapshot) {
-
+	main.innerHTML = "";
 	if(snapshot.val() === null) {
-		h1.textContent = "No saved wishes";
+		h1.textContent = "No saved items";
 		browse.classList.remove("hidden");
 		return;
 	}
 	// container.innerHTML = "";
 	data = snapshot.val();
-	console.log(data)
+
+
 	displaySaved(data);
+	displayFulfilled(data);
 
 };
 
-function watchData() {
-	firebase.database().ref().on("value", updateView);
-} 
 
-
-
-//save api data 
-//..................... 
-function saveBrands(json) {
-	json.brands.forEach(function(item) {
-		brands.push(item);
-	});
-};
-
-function saveColors(json) {
-	json.colors.forEach(function(item) {
-		colors.push(item);
-	});
-};
-
-//update page 
+//Handlebar and display functions
 //..................... 
 
-
-//compile handlebars template with array
+//compile search results template with results array
 function displayResults(json) {
+	//save json.products in results array
 	results = json.products;
+	main.classList.remove("hidden");
+	loader.classList.add("hidden");
 	var template = Handlebars.compile(resultsTemplate.innerHTML);
 	main.innerHTML = template(results);
 
+	//dont display fulfilledContainer template
+	fulfilledContainer.innerHTML = "";
+
+	//grab results container and add event listener for addWish funciton
 	var searchResults = document.querySelector(".results-container");
-	//on list click, show list contents
 	searchResults.addEventListener("click", addWish);
-}
+};
 
-//compile
+//compile saved wishes template with data.wishes array
 function displaySaved(json) {
+	//hide browsing categories list
+	browse.classList.add("hidden");
 	
-	h1.textContent = "Saved Wishes";
-	var template = Handlebars.compile(savedTemplate.innerHTML);
-	main.innerHTML = template(json.wishes);
-	console.log(json);
+	if(json.wishes == undefined || json.wishes.length == 0) {
+		h1.textContent = "No saved wishes";
+		browse.classList.remove("hidden");
+		main.classList.add("hidden");
+		json.wishes = [];
+	} else {
+		var template = Handlebars.compile(savedTemplate.innerHTML);
+		main.innerHTML = template(json.wishes);
 
-	var savedItems = document.querySelector(".saved-container");
+		//set headline
+		h1.textContent = "Saved Wishes";
 
-	savedItems.addEventListener("click", markFulfilled);
-	savedItems.addEventListener("click", deleteSavedItem);
+		//grab saved items container and add event listeners 
+		var savedItems = document.querySelector(".saved-container");
+		savedItems.addEventListener("click", markFulfilled);
+		savedItems.addEventListener("click", deleteSavedItem);
+	}	
+};
+
+function displayFulfilled(json) {
+	
+	if(json.fulfilled.length == 1) {
+		fulfilledContainer.innerHTML = '';
+		return;
+	}
+	var template = Handlebars.compile(fulfilledTemplate.innerHTML);
+	fulfilledContainer.innerHTML = template(json.fulfilled);
+
+	var fulfilledItems = document.querySelector(".fulfilled-container");
+	fulfilledItems.addEventListener("click", deleteFulfilled);
+	fulfilledItems.addEventListener("click", markThanked)
+}
+
+function showBrowse(e) {
+	e.preventDefault();
+	console.log(e);
+	h1.textContent = '';
+	main.innerHTML = '';
+	fulfilledContainer.innerHTML = '';
+	browse.classList.remove('hidden');
 }
 
 
-function displayBrands(json) {
-	var template = Handlebars.compile(brandTemplate.innerHTML);
-	brandList.innerHTML = template(json);
-	// debugger
+
+function hideLoader() {
+	loader.classList.add("hidden");
+}
+
+function showLoader() {
+	loader.classList.remove("hidden");
 }
 
 
 
 
-
+	

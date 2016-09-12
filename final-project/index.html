@@ -10,6 +10,10 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<div class="loader hidden">
+	<img src="images/loader.gif">
+</div>
 	<header>
 		<div class="header container-fluid">
 			<div class="flex-grid">
@@ -29,101 +33,78 @@
 		</div>
 	</header>
 
-	<!-- filter dropdowns -->
-	<nav class="filters container-fluid">
-		<h1 class="center-block headline"></h1>
-			<ul class="hidden">
-				<li>Filters:</li>
-				
-				<li class="dropdown"><a href="#" data-toggle="dropdown">Brand <span class="glyphicon glyphicon-plus"></span></a>
-					<ul id="brands" class="dropdown-menu">
-						<script type="text/x-handlebars-template" id="brand-template">
-							{{#each this}}
-							<li><a href="#">{{name}}</a></li>
-							{{/each}}
-						</script>
-					</ul>
-						
-				</li>
-			
-				
-				
-					<li class="dropdown"><a href="#" data-toggle="dropdown">Price <span class="glyphicon glyphicon-plus"></span></a>
-						<ul class="dropdown-menu">
-							<li><input type="radio">Under $50</li>
-							<li><input type="radio">Under $100</li>
-							<li><input type="radio">Under $500</li>
-						</ul>
-					</li>
-				
+<h1 class="headline"></h1>
 
-				
-					<li class="dropdown"><a href="#" data-toggle="dropdown">Color <span class="glyphicon glyphicon-plus"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Black</a></li>
-							<li><a href="#">Red</a></li>
-							<li><a href="#">Orange</a></li>
-							<li><a href="#">Yellow</a></li>
-							<li><a href="#">Green</a></li>
-							<li><a href="#">Blue</a></li>
-							<li><a href="#">Purple</a></li>
-						</ul>
-					</li>
-			</ul>
-
-
-	</nav>
-
-<div class="browse hidden">
+		<div class="browse hidden">
 	<!-- browse by category nav -->
+
 	<nav>
+
 		<h2>Search for products or browse by category</h2>
 		
 		<ul class="flex-grid">
-			<li class="col"><a href="#">Women</a>
-				<ul><!-- womens  -->
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Dresses</a></li>
-					<li><a href="#">Jackets</a></li>
-					<li><a href="#">Pants</a></li>
-					<li><a href="#">Bags</a></li>
-					<li><a href="#">Shoes</a></li>
+		<div class="col">
+			<strong>Women</strong>
+			<ul class="womens"><!-- womens  -->
+					<li><a data-cat="womens-clothes">All Women</a></li>
+					<li><a data-cat="womens-accessories">Accessories</a></li>
+					<li><a data-cat="womens-athletic-clothes">Activewear</a></li>
+					<li><a data-cat="jeans">Denim</a></li>
+					<li><a data-cat="dresses">Dresses</a></li>
+					<li><a data-cat="womens-intimates">Intimates</a></li>
+					<li><a data-cat="jackets">Jackets</a></li>
+					<li><a data-cat="womens-outerwear">Outerwear</a></li>
+					<li><a data-cat="womens-pants">Pants</a></li>
+					<li><a data-cat="shorts">Shorts</a></li>
+					<li><a data-cat="skirts">Skirts</a></li>
+					<li><a data-cat="sweaters">Sweaters</a></li>
+					<li><a data-cat="swimsuits">Swim</a></li>
+					<li><a data-cat="womens-tops">Tops</a></li>
 				</ul>
-			</li>
+			
+			<li><a data-cat="handbags">Bags</a></li>
+			<li><a data-cat="womens-shoes">Shoes</a></li>
 			<!-- end women -->
-
+			</div>
+			<div class="col">
 			<!-- mens -->
-			<li class="col"><a href="#">Men</a>
-				<ul>
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Jeans</a></li>
-					<li><a href="#">Outerwear</a></li>
-					<li><a href="#">Suits</a></li>
-					<li><a href="#">Bags</a></li>
-					<li><a href="#">Shoes</a></li>
+			<strong>Men</strong>
+			
+				<ul class="mens">
+					<li><a data-cat="mens-clothes">All Men</a></li>
+					<li><a data-cat="mens-accessories">Accessories</a></li>
+					<li><a data-cat="mens-athletic">Activewear</a></li>
+					<li><a data-cat="mens-jeans">Jeans</a></li>
+					<li><a data-cat="mens-outerwear">Outerwear</a></li>
+					<li><a data-cat="mens-pants">Pants</a></li>
+					<li><a data-cat="mens-shirts">Shirts</a></li>
+					<li><a data-cat="mens-shorts">Shorts</a></li>
+					<li><a data-cat="mens-suits">Suits</a></li>
+					<li><a data-cat="mens-sweaters">Sweaters</a></li>
+					<li><a data-cat="mens-swimsuits">Swim</a></li>
+					<li><a data-cat="mens-underwear-and-socks">Underwear &amp; Socks</a></li>
 				</ul>
-			</li>
+			
+			<li><a data-cat="mens-bags">Bags</a></li>
+			<li><a data-cat="mens-shoes">Shoes</a></li>
 			<!-- end mens -->
-			<li class="col">
-				<ul>
-					<li><a href="#">Jewelry</a></li>
-					<li><a href="#">Home</a></li>
-				</ul>
-			</li>
-			<li class="col">
-				<ul>
-					<li class="col"><a href="#">Beauty</a></li>
-					<li class="col"><a href="#">Sale</a></li>
-				</ul>
-			</li>
+			</div>
+		<div class="col">
+					<li><a data-cat="jewelrey">Jewelry</a></li>
+					<li><a data-cat="living">Home</a></li>
+					<li><a data-cat="womens-beauty">Beauty</a></li>
+				
+			</div>
 		</ul>
 	</nav>
+	</div>
 	<!-- end browse navigation --> 
-</div>
+
 
 	<!-- result template module -->
 
 <section id="main-container" class="container-fluid"></section>
+<section id="fulfilled-container"></section>
 
 <script type="text/x-handlebars-template" id="results-template">
 	<div class="results-container">
@@ -152,9 +133,10 @@
 
 	<!-- end result template -->
 
-<!-- list template -->
+<!-- saved template -->
 <script type="text/x-handlebars-template" id="saved-template">
 	<div class="saved-container">	
+
 		<div class="flex-grid"><!-- START RESULT ROW 1 -->
 
 		{{#each this}}
@@ -176,90 +158,30 @@
 		</div><!-- END RESULT ROW 2 -->
 	</div>
 </script>
-<!-- end list template -->
+<!-- end saved template -->
 
 
 
-	<!-- list detail module -->
-	<section class="hidden">
-		<h1>List Name</h1>
-		<p>List Description</p>
-		<a href="#"><span class="glyphicon glyphicon-plus"></span></a>
-		<div class="container-fluid">
+<!-- fulfilled template -->
+<script type="text/x-handlebars-template" id="fulfilled-template">
+	<div class="fulfilled-container">	
+	<h3>Wishes Granted</h3>
+		<ul><!-- START RESULT ROW 1 -->
 
-			<div class="row"><!-- START ROW 1-->
-				<div class="col-sm-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
+		{{#each this}}
+			<li {{#if thanked}} class="thanked" {{/if}} data-index={{@index}}>{{name}} <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></li>
+		{{/each}}
 
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
-
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="col-sm-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
-
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="col-sm-3">
-					<div class="thumbnail">
-						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						<a href="#">
-							<img src="http://placehold.it/300">
-						</a>
-
-						<div cass="detail-hover">
-							<p>Brand and Item Name</p>
-							<p>$Price</p>
-						</div>
-					</div>
-				</div>
-			</div><!-- END ROW 1-->
+		</ul><!-- END RESULT ROW 2 -->
+	</div>
+</script>
+<!-- end fulfilled template -->
 
 
 
-		</div>
-	</section>	
-	<!-- end list details -->
-
-
+	
 	<footer>
-		
+
 	</footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
