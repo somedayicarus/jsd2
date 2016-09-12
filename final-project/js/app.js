@@ -111,12 +111,11 @@ function browseByCategory(e) {
 }
 
 function addWish(e) {
-	e.preventDefault();
-
 	if(e.target.tagName != "SPAN") {
 		return;
 	};
-
+	
+	e.preventDefault();
 	var clicked = e.target.closest("figure");
 	var index = clicked.dataset.index;
 	var product = results[index];
@@ -273,7 +272,7 @@ function displaySaved(json) {
 	browse.classList.add("hidden");
 	
 	if(json.wishes == undefined || json.wishes.length == 0) {
-		h1.textContent = "No saved wishes";
+		h1.textContent = "No saved items";
 		browse.classList.remove("hidden");
 		main.classList.add("hidden");
 		json.wishes = [];
@@ -282,7 +281,7 @@ function displaySaved(json) {
 		main.innerHTML = template(json.wishes);
 
 		//set headline
-		h1.textContent = "Saved Wishes";
+		h1.textContent = "Saved items";
 
 		//grab saved items container and add event listeners 
 		var savedItems = document.querySelector(".saved-container");
