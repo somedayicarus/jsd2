@@ -122,6 +122,21 @@ nav a:hover {
 	background-image:url('../images/sparkle_green.gif');
 }
 
+#final-project {
+	text-align:center;
+	display:block;
+	background: #ffc3e1; /* Old browsers */
+	background: -moz-linear-gradient(left,  #ffc3e1 1%, #ffe2a7 20%, #fffa9d 40%, #c6f8a6 60%, #afe2ff 80%, #e3b6fb 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #ffc3e1 1%,#ffe2a7 20%,#fffa9d 40%,#c6f8a6 60%,#afe2ff 80%,#e3b6fb 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #ffc3e1 1%,#ffe2a7 20%,#fffa9d 40%,#c6f8a6 60%,#afe2ff 80%,#e3b6fb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc3e1', endColorstr='#e3b6fb',GradientType=1 ); /* IE6-9 */
+
+	padding:15px 0;
+	border-radius:5px;
+	font-size:18px;
+	font-family:'VT323', monospace;
+}
+
 #hw1 {background-color: #ffc3e1;}
 #hw2 {background-color: #ffe2a7;}
 #hw3 {background-color: #fffa9d;}
