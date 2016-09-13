@@ -58,16 +58,25 @@ ul {
 /* browse */
 .browse a {
 	text-decoration: none;
-	padding:8px;
 	cursor: pointer;
+}
+.browse ul {
+	max-width:650px;
+	margin:10px auto;
+	text-align:center;
 }
 .browse ul li {
 	list-style: none;
+	padding:8px;
 }
-.womens, .mens {
-	margin-left:10px;
+.browse h4 {
+	margin:10px 0 0 0;
 }
-
+.browse li a:hover {
+	font-weight:bold;
+	font-style: italic;
+	color:#3a3a3a;
+}
 
 /* header */
 header {
@@ -246,6 +255,24 @@ section#fulfilled-container {
 
 
 
+@media(max-width:615px) {
+	header .flex-grid {
+		display:block;
+
+	}
+	header p {
+		margin:0 auto 30px;
+	}
+	header .heart {
+		margin-top:10px;
+	}
+}
+
+@media(max-width:470px) {
+	.search input {
+		width:85%;
+	}
+}
 
 
 
