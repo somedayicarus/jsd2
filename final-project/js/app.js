@@ -3,7 +3,7 @@
 
 //shopstyle API endpoint
 var pid = "uid3904-35452852-63";
-var url = "http://api.shopstyle.com/api/v2/products?pid=" + pid + "&limit=50";
+var url = "https://api.shopstyle.com/api/v2/products?pid=" + pid + "&limit=50";
 
 
 //handlebar templates
