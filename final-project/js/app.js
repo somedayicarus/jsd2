@@ -52,7 +52,7 @@ var pager = document.querySelector(".pager");
 //.....................
 
 //fire on load
-window.addEventListener("load", init)	
+window.addEventListener("load", init);	
 
 //on search submit, make ajax request
 form.addEventListener("submit", runSearch);
@@ -61,7 +61,7 @@ form.addEventListener("submit", runSearch);
 logo.addEventListener("click", showBrowse);
 
 //on heart click, show saved items
-heart.addEventListener("click", init)
+heart.addEventListener("click", init);
 
 //when category clicked make ajax request
 browse.addEventListener("click", browseByCategory);
@@ -166,13 +166,13 @@ function addWish(e) {
 		image: product.image.sizes.Large.url,
 		url: product.clickUrl,
 		fulfilled: false
-	}
+	};
 
 	//add wish item to wishes array
 	data.wishes.push(wish);
 
 	//add liked class to icon 
-	e.target.classList.add("liked")
+	e.target.classList.add("liked");
 
 	//save updated list data to firebase
 	saveData(data);
@@ -202,11 +202,11 @@ function markFulfilled(e) {
 			url: product.url,
 			fulfilled: true,
 			thanked: false
-		}
+		};
 		
 		//add received item to fulfilled array and remove from wishlist
 		data.fulfilled.push(received);
-		data.wishes.splice(index, 1)
+		data.wishes.splice(index, 1);
 
 		//send new data object to firebase
 		saveData();
@@ -253,13 +253,13 @@ function deleteFulfilled(e) {
 		var index = clicked.dataset.index;
 
 		//remove from received items array
-		data.fulfilled.splice(index, 1)
+		data.fulfilled.splice(index, 1);
 
 		//send new data object to firebase and update page
 		saveData();
 		displayFulfilled(data);
 	}
-}
+};
 
 //keep track of thank yous sent for items
 function markThanked(e) {
@@ -373,7 +373,7 @@ function displayFulfilled(json) {
 	//grab fulfilled container and add event listeners
 	var fulfilledItems = document.querySelector(".fulfilled-container");
 	fulfilledItems.addEventListener("click", deleteFulfilled);
-	fulfilledItems.addEventListener("click", markThanked)
+	fulfilledItems.addEventListener("click", markThanked);
 	}
 };
 

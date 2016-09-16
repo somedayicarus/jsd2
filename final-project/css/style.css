@@ -153,6 +153,7 @@ figure .glyphicon {
 	cursor:pointer;
 	font-size:18px;
 }
+
 figure .glyphicon:hover {
 	color:palevioletred;
 }
@@ -200,7 +201,6 @@ figure:hover figcaption {
 .saved .glyphicon-ok {
 	right:4px;
 }
-
 
 .saved .glyphicon-ok:hover {
 	color:green;
@@ -253,13 +253,6 @@ section#fulfilled-container {
 	color:grey;
 }
 
-/* pagination */
-#pagination {
-	text-align: center;
-}
-.pager > li > a {
-	color: palevioletred;
-}
 @media(max-width:615px) {
 	header .flex-grid {
 		display:block;
