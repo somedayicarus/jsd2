@@ -253,8 +253,13 @@ section#fulfilled-container {
 	color:grey;
 }
 
-
-
+/* pagination */
+#pagination {
+	text-align: center;
+}
+.pager > li > a {
+	color: palevioletred;
+}
 @media(max-width:615px) {
 	header .flex-grid {
 		display:block;

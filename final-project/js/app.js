@@ -3,8 +3,10 @@
 
 //shopstyle API endpoint
 var pid = "uid3904-35452852-63";
-var url = "https://api.shopstyle.com/api/v2/products?pid=" + pid + "&limit=50";
-
+var limit =  50;
+var offset = 0;
+var searchText = "";
+var url = "https://api.shopstyle.com/api/v2/products?pid=" + pid;
 
 //handlebar templates
 var resultsTemplate = document.querySelector("#results-template");
@@ -32,6 +34,7 @@ var data = {
 };
 
 
+
 //DOM Elements
 //.....................
 var main = document.querySelector("#main-container");
@@ -43,7 +46,7 @@ var fulfilledContainer = document.querySelector("#fulfilled-container");
 var browse = document.querySelector(".browse");
 var h1 = document.querySelector(".headline");
 var loader = document.querySelector(".loader");
-
+var pager = document.querySelector(".pager");
 
 //event listeners 
 //.....................
@@ -62,7 +65,6 @@ heart.addEventListener("click", init)
 
 //when category clicked make ajax request
 browse.addEventListener("click", browseByCategory);
-
 
 //event handlers 
 //.....................
@@ -84,13 +86,40 @@ function runSearch(e) {
 	h1.textContent = "Search results for: '" + input.value + "'";
 
 	//format search field value as proper string for ajax request
-	var searchText = "&fts=" + input.value.split(' ').join('+');
-
+	searchText = "&fts=" + input.value.split(' ').join('+');
+	var searchURL = url + searchText + "&limit=" + limit;
+	console.log(searchURL);
 	//make ajax request and pass response to displayResults func
-	$.getJSON(url + searchText, displayResults);
+	$.getJSON(searchURL, displayResults);
 
 	//clear search field
 	input.value = "";
+};
+
+function moreResults(e) {
+	e.preventDefault();
+	offset += limit;
+
+	if(offset >= 5000) {
+		return;
+	}
+
+	var searchURL = url + searchText + "&offset=" + offset + "&limit=" + limit;
+	$.getJSON(searchURL, displayResults)
+};
+
+function previousResults(e) {
+	e.preventDefault();
+	offset -= limit;
+
+	if(offset < 0) {
+		backBtn.classList.add("disabled");
+		return;
+	}
+
+	var searchURL = url + searchText + "&offset=" + offset + "&limit=" + limit;
+	
+	$.getJSON(searchURL, displayResults)
 };
 
 //run ajax request with product category parameter
@@ -357,6 +386,20 @@ function showBrowse(e) {
 	fulfilledContainer.innerHTML = '';
 	browse.classList.remove('hidden');
 };
+
+function displayPagination() {
+	var moreBtn = document.createElement("li");
+	var backBtn = document.createElement("li");
+
+	moreBtn.addEventListener("click", moreResults);
+	backBtn.addEventListener("click", previousResults);
+
+	backBtn.innerHTML = "<a href=''>Back</a>";
+	moreBtn.innerHTML = "<a href=''>More</a>";
+
+	pager.appendChild(backBtn);
+	pager.appendChild(moreBtn);
+}
 
 //toggle loader gif functions
 function hideLoader() {
