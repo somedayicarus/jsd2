@@ -2,10 +2,11 @@
 //.....................
 
 //shopstyle API endpoint
-var pid = "uid3904-35452852-63";
-var limit =  50;
 var offset = 0;
+var limit =  50;
+var pid = "uid3904-35452852-63";
 var searchText = "";
+var browseCat = "";
 var url = "https://api.shopstyle.com/api/v2/products?pid=" + pid;
 
 //handlebar templates
@@ -13,13 +14,11 @@ var resultsTemplate = document.querySelector("#results-template");
 var savedTemplate = document.querySelector("#saved-template");
 var fulfilledTemplate = document.querySelector("#fulfilled-template");
 
-
 // Initialize Firebase
 var config = {
-apiKey: "AIzaSyC0OdzgE2grH1ZTXHB4Z9dWdAsUL8M9rbc",
-authDomain: "tinsel-4db11.firebaseapp.com",
-databaseURL: "https://tinsel-4db11.firebaseio.com",
-storageBucket: "tinsel-4db11.appspot.com",
+	apiKey: "AIzaSyC0OdzgE2grH1ZTXHB4Z9dWdAsUL8M9rbc",
+	authDomain: "tinsel-4db11.firebaseapp.com",
+	databaseURL: "https://tinsel-4db11.firebaseio.com",
 };
 
 firebase.initializeApp(config);
@@ -37,16 +36,20 @@ var data = {
 
 //DOM Elements
 //.....................
-var main = document.querySelector("#main-container");
-var form = document.querySelector("form");
-var input = document.querySelector("#search");
-var logo = document.querySelector(".logo");
-var heart = document.querySelector(".heart");
-var fulfilledContainer = document.querySelector("#fulfilled-container");
-var browse = document.querySelector(".browse");
-var h1 = document.querySelector(".headline");
-var loader = document.querySelector(".loader");
-var pager = document.querySelector(".pager");
+var h1        = document.querySelector(".headline");
+var body      = document.querySelector("body");
+var logo      = document.querySelector(".logo");
+var main      = document.querySelector("#main-container");
+var form      = document.querySelector("form");
+var input     = document.querySelector("#search");
+var heart     = document.querySelector(".heart");
+var pager     = document.querySelector("#pagination");
+var browse    = document.querySelector(".browse");
+var topBtn    = document.querySelector(".top");
+var loader    = document.querySelector(".loader");
+var moreBtn   = document.querySelector("#more-btn");
+var backBtn   = document.querySelector("#back-btn");
+var fulfilled = document.querySelector("#fulfilled-container");
 
 //event listeners 
 //.....................
@@ -66,11 +69,17 @@ heart.addEventListener("click", init);
 //when category clicked make ajax request
 browse.addEventListener("click", browseByCategory);
 
+moreBtn.addEventListener("click", moreResults);
+backBtn.addEventListener("click", previousResults);
+
+window.addEventListener("scroll", revealTopButton);
+
 //event handlers 
 //.....................
 
 //on load, grab firebase data and dispaly saved items
 function init(e) {
+	
 	firebaseRef.once('value').then(getData);
 }
 
@@ -88,38 +97,55 @@ function runSearch(e) {
 	//format search field value as proper string for ajax request
 	searchText = "&fts=" + input.value.split(' ').join('+');
 	var searchURL = url + searchText + "&limit=" + limit;
-	console.log(searchURL);
+
 	//make ajax request and pass response to displayResults func
 	$.getJSON(searchURL, displayResults);
 
 	//clear search field
 	input.value = "";
+
 };
 
 function moreResults(e) {
 	e.preventDefault();
+
 	offset += limit;
 
 	if(offset >= 5000) {
+		moreBtn.classList.add("disabled");
 		return;
 	}
+	showLoader();
+	backBtn.classList.remove("disabled");
+	window.scroll(0, 0);
 
-	var searchURL = url + searchText + "&offset=" + offset + "&limit=" + limit;
-	$.getJSON(searchURL, displayResults)
+	if(searchText == "") {
+		var browseURL = url + browseCat + "&offset=" + offset + "&limit=" + limit;
+		$.getJSON(browseURL, displayResults);
+	} else {
+		var searchURL = url + searchText + "&offset=" + offset + "&limit=" + limit;
+		$.getJSON(searchURL, displayResults)
+	}
 };
 
 function previousResults(e) {
 	e.preventDefault();
 	offset -= limit;
 
-	if(offset < 0) {
+	if(offset == 0) {
 		backBtn.classList.add("disabled");
-		return;
 	}
 
-	var searchURL = url + searchText + "&offset=" + offset + "&limit=" + limit;
-	
-	$.getJSON(searchURL, displayResults)
+	showLoader();
+	window.scroll(0, 0);
+
+	if(searchText == "") {
+		var browseURL = url + browseCat + "&offset=" + offset + "&limit=" + limit;
+		$.getJSON(browseURL, displayResults);
+	} else {
+		var searchURL = url + searchText + "&offset=" + offset + "&limit=" + limit;
+		$.getJSON(searchURL, displayResults)
+	}
 };
 
 //run ajax request with product category parameter
@@ -136,12 +162,15 @@ function browseByCategory(e) {
 
 		//set headline text
 		h1.textContent = e.target.textContent;
+		browseCat = "&cat=" + e.target.dataset.cat;
+
+		searchText = "";
 
 		//grab data-cat from clicked element to use url param
-		var cat = "&cat=" + e.target.dataset.cat;
+		var browseURL = url + browseCat + "&offset=" + offset + "&limit=" + limit;
 
 		//append category parameter and make ajax request - pass response to displayResults
-		$.getJSON(url + cat, displayResults);
+		$.getJSON(browseURL, displayResults);
 	}
 };
 
@@ -282,6 +311,20 @@ function markThanked(e) {
 	}
 };
 
+function revealTopButton(e) {
+
+	if(window.scrollY > 250) {
+		topBtn.classList.add("load");
+	} else {
+		topBtn.classList.remove("load");
+	}
+
+	topBtn.addEventListener("click", function() {
+		window.scroll(0,0);
+	});
+
+}
+
 //firebase functions 
 //..................... 
 //set firebase data
@@ -299,6 +342,7 @@ function getData(snapshot) {
 	if(snapshot.val() === null) {
 		h1.textContent = "No saved items";
 		browse.classList.remove("hidden");
+			
 		return;
 	}
 	//set returned firebase snapshot to data object
@@ -315,6 +359,7 @@ function getData(snapshot) {
 
 //compile search results template with results array
 function displayResults(json) {
+
 	//save json.products in results array
 	results = json.products;
 
@@ -324,8 +369,11 @@ function displayResults(json) {
 	var template = Handlebars.compile(resultsTemplate.innerHTML);
 	main.innerHTML = template(results);
 
-	//dont display fulfilledContainer template
-	fulfilledContainer.innerHTML = "";
+	//dont display fulfilled template
+	fulfilled.innerHTML = "";
+
+	//show pager
+	showPager();
 
 	//grab results container and add event listener for addWish funciton
 	var searchResults = document.querySelector(".results-container");
@@ -334,9 +382,10 @@ function displayResults(json) {
 
 //compile saved wishes template with data.wishes array
 function displaySaved(json) {
-	//hide browsing categories list
+	//hide browsing categories list and pager
 	browse.classList.add("hidden");
-	
+	pager.classList.add("hidden");
+
 	//check to see if wishlist array is undefined or empty
 	if(json.wishes == undefined || json.wishes.length == 0) {
 		h1.textContent = "No saved items";
@@ -363,12 +412,12 @@ function displayFulfilled(json) {
 	
 	//check to see if array is empty
 	if(json.fulfilled.length == 1) {
-		fulfilledContainer.innerHTML = '';
+		fulfilled.innerHTML = '';
 		return;
 	} else {
 	//compile handlebars template
 	var template = Handlebars.compile(fulfilledTemplate.innerHTML);
-	fulfilledContainer.innerHTML = template(json.fulfilled);
+	fulfilled.innerHTML = template(json.fulfilled);
 
 	//grab fulfilled container and add event listeners
 	var fulfilledItems = document.querySelector(".fulfilled-container");
@@ -379,26 +428,17 @@ function displayFulfilled(json) {
 
 function showBrowse(e) {
 	e.preventDefault();
+	pager.classList.add("hidden");
 
 	//update page content and show browse category list
 	h1.textContent = '';
 	main.innerHTML = '';
-	fulfilledContainer.innerHTML = '';
+	fulfilled.innerHTML = '';
 	browse.classList.remove('hidden');
 };
 
-function displayPagination() {
-	var moreBtn = document.createElement("li");
-	var backBtn = document.createElement("li");
-
-	moreBtn.addEventListener("click", moreResults);
-	backBtn.addEventListener("click", previousResults);
-
-	backBtn.innerHTML = "<a href=''>Back</a>";
-	moreBtn.innerHTML = "<a href=''>More</a>";
-
-	pager.appendChild(backBtn);
-	pager.appendChild(moreBtn);
+function showPager() {
+	pager.classList.remove("hidden");
 }
 
 //toggle loader gif functions
@@ -409,6 +449,20 @@ function hideLoader() {
 function showLoader() {
 	loader.classList.remove("hidden");
 };
+
+
+
+/*  test */
+
+function List(name) {
+	this.name = name;
+}
+
+var list1 = new List("Christmas List");
+
+var list2 = new List("Birthday Wishes");
+ 
+var list3 = new List("expensive things");
 
 
 
