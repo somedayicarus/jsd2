@@ -91,18 +91,12 @@ function runSearch(e) {
 	showLoader();
 	browse.classList.add("hidden");
 
-	//set headline content
-	h1.textContent = "Search results for: '" + input.value + "'";
-
 	//format search field value as proper string for ajax request
 	searchText = "&fts=" + input.value.split(' ').join('+');
 	var searchURL = url + searchText + "&limit=" + limit;
 
 	//make ajax request and pass response to displayResults func
 	$.getJSON(searchURL, displayResults);
-
-	//clear search field
-	input.value = "";
 
 };
 
@@ -131,7 +125,8 @@ function moreResults(e) {
 function previousResults(e) {
 	e.preventDefault();
 	offset -= limit;
-
+	moreBtn.classList.remove("disabled");
+	
 	if(offset == 0) {
 		backBtn.classList.add("disabled");
 	}
@@ -359,25 +354,38 @@ function getData(snapshot) {
 
 //compile search results template with results array
 function displayResults(json) {
-
+	console.log(json);
 	//save json.products in results array
 	results = json.products;
 
 	main.classList.remove("hidden");
 	hideLoader();
-	//compile template with 
-	var template = Handlebars.compile(resultsTemplate.innerHTML);
-	main.innerHTML = template(results);
 
-	//dont display fulfilled template
-	fulfilled.innerHTML = "";
+	if(results.length === 0) {
+		h1.textContent = "No results found, please try again";
+	} else if(results.length <= 50) {
+		showPager()
 
-	//show pager
-	showPager();
+		//compile template with 
+		var template = Handlebars.compile(resultsTemplate.innerHTML);
+		main.innerHTML = template(results);
+		h1.textContent = "Search results for: '" + input.value + "'";
 
-	//grab results container and add event listener for addWish funciton
-	var searchResults = document.querySelector(".results-container");
-	searchResults.addEventListener("click", addWish);
+		//dont display fulfilled template
+		fulfilled.innerHTML = "";
+
+		//grab results container and add event listener for addWish funciton
+		var searchResults = document.querySelector(".results-container");
+		searchResults.addEventListener("click", addWish);
+		
+		if(results.length < 50) {
+			moreBtn.classList.add("disabled");
+		}
+	}
+
+	//clear search field
+	// input.value = "";
+
 };
 
 //compile saved wishes template with data.wishes array
@@ -440,6 +448,10 @@ function showBrowse(e) {
 function showPager() {
 	pager.classList.remove("hidden");
 }
+function hidePager() {
+	pager.classList.add("hidden");
+}
+
 
 //toggle loader gif functions
 function hideLoader() {
@@ -452,17 +464,6 @@ function showLoader() {
 
 
 
-/*  test */
-
-function List(name) {
-	this.name = name;
-}
-
-var list1 = new List("Christmas List");
-
-var list2 = new List("Birthday Wishes");
- 
-var list3 = new List("expensive things");
 
 
 
