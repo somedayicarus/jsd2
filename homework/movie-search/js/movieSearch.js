@@ -86,7 +86,7 @@ function listResults(movie) {
 function getDetails(e) {
 	e.preventDefault();
 
-	OMDbAPI = "https://www.omdbapi.com/?i=" + e.currentTarget.id;
+	OMDbAPI = "https://www.omdbapi.com/?" + key + "&i=" + e.currentTarget.id;
 	$.getJSON(OMDbAPI, listDetail);
 
 	poster.innerHTML = "";
