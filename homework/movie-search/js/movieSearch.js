@@ -2,6 +2,7 @@
 // Setup
 // ----------------------------------------------
 var posterNotFound = "images/poster-not-found.png";
+var key = "apikey=fd47c9e7";
 var li;
 var OMDbAPI;
 
@@ -25,7 +26,7 @@ form.addEventListener("submit", getMovies);
 //on click, request json and call dispalyResults
 function getMovies(e) {
 	e.preventDefault();
-	OMDbAPI = "https://www.omdbapi.com/?s=" + search.value;
+	OMDbAPI = "https://www.omdbapi.com/?" + key + "&s=" + search.value;
 	$.getJSON(OMDbAPI, displayResults);
 };
 
